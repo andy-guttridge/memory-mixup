@@ -23,8 +23,8 @@ p {
   display: inline-block;
   width: 30%;
   padding-top: 30%;
-  background-image: url("../images/elephant-img.png");
-  background-size:contain;
+  background-image: url("../images/elephant-img.png"); 
+  background-size: contain;
 }
 
 /* -------------------- Styles for footer -------------------- */
