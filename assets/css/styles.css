@@ -1,3 +1,48 @@
+/* -------------------- Site wide styles -------------------- */
 body {background-color:thistle;
   text-align: center;
 }
+
+h1, p {
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+p {
+  white-space: pre;
+}
+
+/* -------------------- Styles for header -------------------- */
+
+
+/* -------------------- Styles for controls area -------------------- */
+
+
+/* -------------------- Styles for main play area -------------------- */
+
+.game-item-container {
+  display: inline-block;
+  width: 30%;
+  padding-top: 30%;
+  background-image: url("../images/elephant-img.png");
+  background-size:contain;
+}
+
+/* -------------------- Styles for footer -------------------- */
+footer {
+  margin: 1rem;
+}
+
+/* -------------------- Media Queries -------------------- */
+
+/* Styles for larger screen sizes */
+@media (min-width: 900px) {
+  #play-container {
+    display: inline-block;
+    min-width: 80%;
+  }
+
+  .game-item-container {
+    width: 20%;
+    padding-top: 20%;
+  }
+ }
