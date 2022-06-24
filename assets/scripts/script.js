@@ -1,12 +1,15 @@
 /* ------------ Constant definitions ------------ */
-const numberOfPlayItems = 12; //The number of items required for each round of the game
-const timerAmount = 2; //The allowed time per round of the game in seconds
+const numberOfPlayItems = 12; //The number of items required for each turn of the game
+const timerAmount = 15; //The allowed time per turn of the game in seconds
+const startingTurns = 5; //The number of turns at the start of a new game
+const playerState = {turnsLeft: 0, score: 0}; //Stores how many turns are left and score
 
 
 // Call setUp() function when DOM has loaded
-document.addEventListener('DOMContentLoaded', setUp) 
+document.addEventListener('DOMContentLoaded', setUp(0)) 
 
 /**
+ * Sets things up for a new game.
  * Ensures event listeners are added to buttons and fills the play area with a random selection of items
  */
 function setUp() {
@@ -15,6 +18,14 @@ function setUp() {
   let fullItemsList = createFullItemsList();
   let randomItemsList = generateRandomItems(fullItemsList);
   fillPlayArea(randomItemsList);
+
+  //Set turnsLeft and score to starting values
+  playerState.turnsLeft = startingTurns;
+  playerState.score = 0;
+
+  //Update score and turns left display
+  document.getElementById('turns-left-info').textContent = playerState.turnsLeft;
+  document.getElementById('score-info').textContent = playerState.score;
 }
 
 /**
@@ -24,6 +35,7 @@ function setUp() {
 function addEventListenersToButtons() {
   let buttons = document.getElementsByTagName('button');
 
+  //Add event listeners to buttons. Make sure start button is enabled
   for (let button of buttons) {
 
     if(button.getAttribute('id') === 'start-button') {
@@ -46,6 +58,9 @@ function playGame(event) {
   let fullItemsList = createFullItemsList();
   let randomItemsList = generateRandomItems(fullItemsList);
   fillPlayArea(randomItemsList);
+
+  //Clear any messages left from previous rounds
+  document.getElementById('answer-container').style.display = 'none';
 
   //Disable the start button, and start a timer
   //Pass the timer function a callback to execute the next part of the game when the timer ends
@@ -89,6 +104,7 @@ function generateRandomItems(fullItemsList) {
   
   //Empty array to hold the randomly selected items
   let randomItemsList = []; 
+
   while (randomItemsList.length <= numberOfPlayItems - 1) {
     //Create random integer no large than number of items we have to pick from
     let randomNumber = Math.floor(Math.random() * fullItemsList.length);
@@ -105,10 +121,13 @@ function generateRandomItems(fullItemsList) {
  */
 function fillPlayArea(randomItemsList) {
   for (let i = 0; i <= numberOfPlayItems - 1; i++) {
+
     //Get reference to the current gameItemContainer
     let gameItemContainer = document.getElementById(`game-item${i}`);
+
     //Retrieve the filename for the item and concatenate to the full file location  
     imageFileNameString = `URL("assets/images/${randomItemsList[i].image}")`; 
+
     //Display the image via CSS backgroundImage property
     gameItemContainer.style.backgroundImage = imageFileNameString; 
   }
@@ -151,6 +170,7 @@ function takeOneItem(randomItemsList) {
 function getAnswerFromPlayer(randomItemsList, removedItem) {
   // randomNumber determines which button has the correct answer
   let randomNumber = Math.floor(Math.random() * 3)
+
   // randomItems[] is used to avoid selecting duplicate random items
   let randomItems = [];
 
@@ -167,6 +187,7 @@ function getAnswerFromPlayer(randomItemsList, removedItem) {
       answerButton.setAttribute('src', `assets/images/${removedItem.image}`);
       i++;
     } else {
+
       //Otherwise choose a random item and add it to the button, unless its one we've already used or the big Cross
       let randomItem = randomItemsList[Math.floor(Math.random() * randomItemsList.length)];
       if (!randomItems.includes(randomItem) && randomItem.name !== 'X') {
@@ -177,11 +198,39 @@ function getAnswerFromPlayer(randomItemsList, removedItem) {
       } 
     }
   }
+  document.getElementById('answer-response').innerHTML = '';
   document.getElementById('answer-container').style.display = 'inline-block';
 }
 
-function evaluateAnswer() {
-  console.log('Entered evaluate answer');
+/**
+ * Evaluates the answer selected by the player, updates the score and number of turns left.
+ * Then starts a new round or displays an end of game message as appropriate.
+ */
+function evaluateAnswer(event) {
+  
+  //Decrement turns left and update display
+  playerState.turnsLeft--;
+  document.getElementById('turns-left-info').textContent = playerState.turnsLeft;
+
+  //If the player selected the correct answer, increment score and display well done message
+  //Otherwise, display hard luck message
+  if (event.target.getAttribute('data-correct-answer') === 'true') {
+    document.getElementById('answer-response').innerHTML = "<h2>Well done, that's right!</h2>"
+    playerState.score++;
+    document.getElementById('score-info').textContent = playerState.score;
+  } else {
+    document.getElementById('answer-response').innerHTML = "<h2>That's not right. Better luck next time.</h2>"
+  }
+
+  //Wait a few seconds and start another round if the player has turns left
+  //Otherwise, display end of game message
+  if (playerState.turnsLeft > 0) {
+    runTimer(5, playGame);
+  } else {
+    document.getElementById('answer-response').innerHTML += `<h2>That's the end of the game. You got ${playerState.score} right, well done!</h2>`;
+    runTimer(5, setUp);
+  }
+  
 }
 
 /**
@@ -199,6 +248,7 @@ async function runTimer(timeInSeconds, callback) {
     timeInSeconds--;
     timerText.textContent = timeInSeconds;
   }
+
   // Call the function passed in as the second parameter
   callback();
 }
