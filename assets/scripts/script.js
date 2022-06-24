@@ -1,6 +1,6 @@
 /* ------------ Constant definitions ------------ */
 const numberOfPlayItems = 12; //The number of items required for each turn of the game
-const timerAmount = 15; //The allowed time per turn of the game in seconds
+const timerAmount = 8; //The allowed time per turn of the game in seconds
 const startingTurns = 5
 ; //The number of turns at the start of a new game
 const playerState = {turnsLeft: 0, score: 0}; //Stores how many turns are left and score
@@ -27,6 +27,9 @@ function setUp() {
   //Update score and turns left display
   document.getElementById('turns-left-info').textContent = playerState.turnsLeft;
   document.getElementById('score-info').textContent = playerState.score;
+
+  //Hide answers area
+  document.getElementById('answer-area').style.display('none');
 }
 
 /**
