@@ -28,8 +28,8 @@ function setUp() {
   document.getElementById('turns-left-info').textContent = playerState.turnsLeft;
   document.getElementById('score-info').textContent = playerState.score;
 
-  //Hide answers area
-  document.getElementById('answer-area').style.display('none');
+  //Hide answer-container
+  document.getElementById('answer-container').style.display('none');
 }
 
 /**
