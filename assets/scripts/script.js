@@ -144,21 +144,30 @@ function takeOneItem(randomItemsList) {
   getAnswerFromPlayer(randomItemsList, removedItem);
 }
 
+/**
+ * Asks player which item is missing. Gives them three buttons to choose from, one of which is correct.
+ * Adds event listeners to the answer buttons.
+ */
 function getAnswerFromPlayer(randomItemsList, removedItem) {
+  // randomNumber determines which button has the correct answer
   let randomNumber = Math.floor(Math.random() * 3)
+  // randomItems[] is used to avoid selecting duplicate random items
   let randomItems = [];
 
   let i = 0;
+  // Loop until all three buttons have an image and event handler
   while (i < 3) {
     let answerButton = document.getElementById(`answer-button${i}`);
     answerButton.addEventListener('click', evaluateAnswer);
- 
+    
+    //If the button is the one selected for the correct answer, give it a data attribute to mark it as correct and set its image to the missing item
     if (i === randomNumber) {
       answerButton.setAttribute('data-correct-answer', true);
       console.log(removedItem.name + ' ' + removedItem.image);
       answerButton.setAttribute('src', `assets/images/${removedItem.image}`);
       i++;
     } else {
+      //Otherwise choose a random item and add it to the button, unless its one we've already used or the big Cross
       let randomItem = randomItemsList[Math.floor(Math.random() * randomItemsList.length)];
       if (!randomItems.includes(randomItem) && randomItem.name !== 'X') {
         answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
