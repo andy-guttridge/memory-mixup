@@ -29,7 +29,7 @@ function setUp() {
   document.getElementById('score-info').textContent = playerState.score;
 
   //Hide answer-container
-  document.getElementById('answer-container').style.display('none');
+  document.getElementById('answer-container').style.display = 'none';
 }
 
 /**
