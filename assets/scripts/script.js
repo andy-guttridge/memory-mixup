@@ -19,6 +19,7 @@ function setUp() {
 
 /**
  * Adds event listeners to the 'start' and 'how to play the game' buttons
+ * and removes the disabled attribute from the start button if it is present
  */
 function addEventListenersToButtons() {
   let buttons = document.getElementsByTagName('button');
@@ -26,7 +27,8 @@ function addEventListenersToButtons() {
   for (let button of buttons) {
 
     if(button.getAttribute('id') === 'start-button') {
-      button.addEventListener('click', playGame)
+      button.addEventListener('click', playGame);
+      button.removeAttribute('disabled');
     } else if(button.getAttribute('id') === 'info-button') {
     button.addEventListener('click', displayInstructions)
     } else {
@@ -45,7 +47,8 @@ function playGame(event) {
   let randomItemsList = generateRandomItems(fullItemsList);
   fillPlayArea(randomItemsList);
 
-  //Start the timer
+  //Disable the start button, and start a timer
+  //Pass the timer function a callback to execute the next part of the game when the timer ends
   let startButton = document.getElementById('start-button');
   startButton.removeEventListener('click', playGame);
   startButton.setAttribute('disabled', true);
