@@ -16,8 +16,24 @@ p {
 
 /* -------------------- Styles for controls area -------------------- */
 
+/* -------------------- Styles for answer area -------------------- */
+
+#answer-container {
+  display: none;
+  width: 80%;
+  background-color: cornflowerblue;
+}
+
+.answer-button {
+  width: 15%;
+}
 
 /* -------------------- Styles for main play area -------------------- */
+#play-container {
+  display: inline-block;
+  width: 80%;
+  background-color:purple;
+}
 
 .game-item-container {
   display: inline-block;
