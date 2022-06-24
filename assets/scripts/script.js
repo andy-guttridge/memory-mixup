@@ -1,6 +1,6 @@
 /* ------------ Constant definitions ------------ */
 const numberOfPlayItems = 12; //The number of items required for each round of the game
-const timerAmount = 5; //The allowed time per round of the game in seconds
+const timerAmount = 2; //The allowed time per round of the game in seconds
 
 
 // Call setUp() function when DOM has loaded
@@ -135,11 +135,44 @@ function takeOneItem(randomItemsList) {
   }
 
   //Pick a random item from the shuffled array of items, store it and then remove and replace with a big X
-  randomIndex = Math.floor(Math.random() * randomItemsList.length-1);
+  randomIndex = Math.floor(Math.random() * randomItemsList.length);
   let removedItem = randomItemsList[randomIndex];
   randomItemsList[randomIndex] = {name:'X', image:'cross-img.png'}
   fillPlayArea(randomItemsList);
   
+  //Call function to get an answer from the player
+  getAnswerFromPlayer(randomItemsList, removedItem);
+}
+
+function getAnswerFromPlayer(randomItemsList, removedItem) {
+  let randomNumber = Math.floor(Math.random() * 3)
+  let randomItems = [];
+
+  let i = 0;
+  while (i < 3) {
+    let answerButton = document.getElementById(`answer-button${i}`);
+    answerButton.addEventListener('click', evaluateAnswer);
+ 
+    if (i === randomNumber) {
+      answerButton.setAttribute('data-correct-answer', true);
+      console.log(removedItem.name + ' ' + removedItem.image);
+      answerButton.setAttribute('src', `assets/images/${removedItem.image}`);
+      i++;
+    } else {
+      let randomItem = randomItemsList[Math.floor(Math.random() * randomItemsList.length)];
+      if (!randomItems.includes(randomItem) && randomItem.name !== 'X') {
+        answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
+        answerButton.setAttribute('data-correct-answer', false);
+        randomItems.push(randomItem);
+        i++;
+      } 
+    }
+  }
+  document.getElementById('answer-container').style.display = 'inline-block';
+}
+
+function evaluateAnswer() {
+  console.log('Entered evaluate answer');
 }
 
 /**
