@@ -1,5 +1,6 @@
 /* ------------ Constant definitions ------------ */
 const numberOfPlayItems = 12; //The number of items required for each round of the game
+const timerAmount = 30; //The allowed time per round of the game in seconds
 
 
 // Call setUp() function when DOM has loaded
@@ -35,12 +36,18 @@ function addEventListenersToButtons() {
 }
 
 /**
- * Runs the main game loop
+ * Starts the game
  */
 function playGame(event) {
+
+  // Fill the pay areas with random items
   let fullItemsList = createFullItemsList();
   let randomItemsList = generateRandomItems(fullItemsList);
   fillPlayArea(randomItemsList);
+
+  //Start the timer
+  runTimer(timerAmount);
+  document.getElementById('start-button').removeEventListener('click', playGame);
 }
 
 /**
@@ -93,6 +100,18 @@ function fillPlayArea(randomItemsList) {
     imageFileNameString = `URL("assets/images/${randomItemsList[i].image}")`; //Retrieve the filename for the item and concatenate to the full file location
     gameItemContainer.style.backgroundImage = imageFileNameString; //Display the image via CSS backgroundImage property
   }
+}
+
+// Code to set up an asynchronous timer adapated from https://masteringjs.io/tutorials/fundamentals/wait-1-second-then#:~:text=To%20delay%20a%20function%20execution,call%20fn%20after%201%20second.
+async function runTimer(timeInSeconds) {
+  let timerText = document.getElementById('time-left-info');
+  timerText.textContent = timeInSeconds;
+  while (timeInSeconds > 0) {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    timeInSeconds--;
+    timerText.textContent = timeInSeconds;
+  }
+  console.log('Timer finished');
 }
 
 /**
