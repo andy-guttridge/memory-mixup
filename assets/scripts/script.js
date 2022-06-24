@@ -7,7 +7,7 @@ const timerAmount = 5; //The allowed time per round of the game in seconds
 document.addEventListener('DOMContentLoaded', setUp) 
 
 /**
- * Ensure event listeners are added to buttons and fills the play area with a random selection of items
+ * Ensures event listeners are added to buttons and fills the play area with a random selection of items
  */
 function setUp() {
   addEventListenersToButtons();
@@ -86,10 +86,14 @@ function createFullItemsList() {
  * Returns an array of unique random items picked from the full list of available items
  */
 function generateRandomItems(fullItemsList) {
-  let randomItemsList = []; //Empty array to hold the randomly selected items
+  
+  //Empty array to hold the randomly selected items
+  let randomItemsList = []; 
   while (randomItemsList.length <= numberOfPlayItems - 1) {
-    let randomNumber = Math.floor(Math.random() * fullItemsList.length); //Create random integer no large than number of items we have to pick from
-    if (!randomItemsList.includes(fullItemsList[randomNumber])) { //Add random item to array if it isn't already in there
+    //Create random integer no large than number of items we have to pick from
+    let randomNumber = Math.floor(Math.random() * fullItemsList.length);
+    //Add random item to array if it isn't already in there 
+    if (!randomItemsList.includes(fullItemsList[randomNumber])) { 
       randomItemsList.push(fullItemsList[randomNumber])
     }
   }
@@ -101,12 +105,19 @@ function generateRandomItems(fullItemsList) {
  */
 function fillPlayArea(randomItemsList) {
   for (let i = 0; i <= numberOfPlayItems - 1; i++) {
-    let gameItemContainer = document.getElementById(`game-item${i}`);  //Get reference to the current gameItemContainer
-    imageFileNameString = `URL("assets/images/${randomItemsList[i].image}")`; //Retrieve the filename for the item and concatenate to the full file location
-    gameItemContainer.style.backgroundImage = imageFileNameString; //Display the image via CSS backgroundImage property
+    //Get reference to the current gameItemContainer
+    let gameItemContainer = document.getElementById(`game-item${i}`);
+    //Retrieve the filename for the item and concatenate to the full file location  
+    imageFileNameString = `URL("assets/images/${randomItemsList[i].image}")`; 
+    //Display the image via CSS backgroundImage property
+    gameItemContainer.style.backgroundImage = imageFileNameString; 
   }
 }
 
+/**
+ * Randomly shuffles the array of items passed in, removes and replaces one item in the array with a big X
+ * and passes the shuffled array and the removed item to the next function
+ */
 function takeOneItem(randomItemsList) {
   //Algorithm to randomly shuffle an array taken from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
   let currentIndex = randomItemsList.length; 
@@ -127,11 +138,16 @@ function takeOneItem(randomItemsList) {
   randomIndex = Math.floor(Math.random() * randomItemsList.length-1);
   let removedItem = randomItemsList[randomIndex];
   randomItemsList[randomIndex] = {name:'X', image:'cross-img.png'}
-  console.log('Removed' + removedItem.name);
-
   fillPlayArea(randomItemsList);
+  
 }
 
+/**
+ * Starts an asynchronous timer and updates the timer on the display
+ * Accepts two parameters:
+ * TimeInSeconds is the number of seconds we want the timer to run;
+ * callback is the function to be called when the timer has elapsed
+ */
 async function runTimer(timeInSeconds, callback) {
   // Code to set up an asynchronous timer adapated from https://masteringjs.io/tutorials/fundamentals/wait-1-second-then#:~:text=To%20delay%20a%20function%20execution,call%20fn%20after%201%20second.
   let timerText = document.getElementById('time-left-info');
