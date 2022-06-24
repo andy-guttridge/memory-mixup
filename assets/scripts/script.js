@@ -1,6 +1,6 @@
 /* ------------ Constant definitions ------------ */
 const numberOfPlayItems = 12; //The number of items required for each round of the game
-const timerAmount = 30; //The allowed time per round of the game in seconds
+const timerAmount = 5; //The allowed time per round of the game in seconds
 
 
 // Call setUp() function when DOM has loaded
@@ -30,9 +30,9 @@ function addEventListenersToButtons() {
       button.addEventListener('click', playGame);
       button.removeAttribute('disabled');
     } else if(button.getAttribute('id') === 'info-button') {
-    button.addEventListener('click', displayInstructions)
+    button.addEventListener('click', displayInstructions);
     } else {
-      throw('Unrecognised button passed to addEventListenersToButtons()')
+      throw('Unrecognised button passed to addEventListenersToButtons()');
     }
   }
 }
@@ -108,7 +108,28 @@ function fillPlayArea(randomItemsList) {
 }
 
 function takeOneItem(randomItemsList) {
-  console.log(randomItemsList);
+  //Algorithm to randomly shuffle an array taken from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+  let currentIndex = randomItemsList.length; 
+  let randomIndex;
+
+  //Loop while there are elements left to shuffle
+  while (currentIndex != 0) {
+
+    //Pick a random element of those that remain and then decrement the index 
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    //Swap the element at the current index with the one at the random index
+    [randomItemsList[currentIndex], randomItemsList[randomIndex]] = [randomItemsList[randomIndex], randomItemsList[currentIndex]];
+  }
+
+  //Pick a random item from the shuffled array of items, store it and then remove and replace with a big X
+  randomIndex = Math.floor(Math.random() * randomItemsList.length-1);
+  let removedItem = randomItemsList[randomIndex];
+  randomItemsList[randomIndex] = {name:'X', image:'cross-img.png'}
+  console.log('Removed' + removedItem.name);
+
+  fillPlayArea(randomItemsList);
 }
 
 async function runTimer(timeInSeconds, callback) {
