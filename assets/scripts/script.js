@@ -169,14 +169,14 @@ function takeOneItem(randomItemsList) {
 
 /**
  * Asks player which item is missing. Gives them three buttons to choose from, one of which is correct.
- * Adds event listeners to the answer buttons.
+ * Adds event listeners to the answer buttons. Accepts the randomised array of items and the item selected to be removed as parameters.
  */
 function getAnswerFromPlayer(randomItemsList, removedItem) {
-  // randomNumber determines which button has the correct answer
-  let randomNumber = Math.floor(Math.random() * 3)
+  // randomButton determines which button is assigned the correct answer
+  let randomButton = Math.floor(Math.random() * 3)
 
-  // randomItems[] is used to avoid selecting duplicate random items
-  let randomItems = [];
+  // randomItems[] is used to track which random items are assigned to the buttons, so we don't repeat them
+  let newRandomItems = [];
 
   let i = 0;
   // Loop until all three buttons have an image and event handler
@@ -184,21 +184,41 @@ function getAnswerFromPlayer(randomItemsList, removedItem) {
     let answerButton = document.getElementById(`answer-button${i}`);
     answerButton.addEventListener('click', evaluateAnswer);
     
-    //If the button is the one selected for the correct answer, give it a data attribute to mark it as correct and set its image to the missing item
-    if (i === randomNumber) {
+    //If the button is the one selected for the correct answer, give it a data attribute in the DOM to mark it as correct and set its image to the missing item
+    if (i === randomButton) {
       answerButton.setAttribute('data-correct-answer', true);
-      console.log(removedItem.name + ' ' + removedItem.image);
       answerButton.setAttribute('src', `assets/images/${removedItem.image}`);
       i++;
     } else {
+      //Otherwise find a random item that wasn't already on the board and add it to the button, unless its one we've already used or the big cross
+      let fullItemsList = createFullItemsList();
+      //Pick a random item from the full list of items
+      let randomItem = fullItemsList[Math.floor(Math.random() * fullItemsList.length)];
+      //didFindItem is used to record the outcome of checking whether the random item has already appeared on the board or already been selected for one of the answer buttons
+      let didFindItem = false;
+      //Check if the random item was used on the board, that it isn't the correct answer, that it isn't the 'X' and that we haven't already used it for another answer button...
+      if (randomItem.name !== 'X' && randomItem.name !== removedItem.name) {
+        for (item of randomItemsList) {
+          if (item.name === randomItem.name || item.name === removedItem.name) {
+          didFindItem = true;
+          break;
+          }
 
-      //Otherwise choose a random item and add it to the button, unless its one we've already used or the big Cross
-      let randomItem = randomItemsList[Math.floor(Math.random() * randomItemsList.length)];
-      if (!randomItems.includes(randomItem) && randomItem.name !== 'X') {
-        answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
-        answerButton.setAttribute('data-correct-answer', false);
-        randomItems.push(randomItem);
-        i++;
+          for (item of newRandomItems) {
+            if (item.name === randomItem.name) {
+              didFindItem = true;
+              break
+            }
+          }
+        }
+
+        //... and if it isn't a duplicate or the X, we can use it for our button
+        if (!didFindItem) {
+          answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
+          answerButton.setAttribute('data-correct-answer', false);
+          newRandomItems.push(randomItem);
+          i++;
+        }
       } 
     }
   }
