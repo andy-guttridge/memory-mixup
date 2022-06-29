@@ -250,7 +250,7 @@ function getAnswerFromPlayer(randomItemsList, removedItem) {
 
 /**
  * Evaluates the answer selected by the player, updates the score and number of turns left.
- * Then starts a new round or displays an end of game message as appropriate.
+ * Then starts a new turn or displays an end of game message as appropriate.
  */
 function evaluateAnswer(event) {
   
@@ -269,10 +269,10 @@ function evaluateAnswer(event) {
     document.getElementById('top-message-area').textContent = `That's not right. The ${chosenItem} was missing. Better luck next time.`
   }
 
-  //Wait a few seconds and start another round if the player has turns left
+  //Wait a few seconds and start another turn if the player has turns left
   //Otherwise, display end of game message
   if (playerState.turnsLeft > 0) {
-    document.getElementById('bottom-message-area').innerHTML = `Next round in <span id = "turn-end-timer"></span>`;
+    document.getElementById('bottom-message-area').innerHTML = `Next turn in <span id = "turn-end-timer"></span>`;
     runTimer(5, playGame, 'turn-end-timer');
   } else {
     if (playerState.score > 0) {

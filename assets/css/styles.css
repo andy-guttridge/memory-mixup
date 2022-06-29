@@ -29,7 +29,7 @@ h1, p {
 }
 
 #answer-container p {
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 .answer-button {
