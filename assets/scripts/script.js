@@ -35,8 +35,8 @@ function setUp() {
   document.getElementById('score-info').textContent = playerState.score;
 
   //Update top message area and clear bottom message area
-  document.getElementById('top-message-area').textContent = 'Press play to start!'
-  document.getElementById('bottom-message-area').textContent = '';
+  // document.getElementById('top-message-area').textContent = 'Press play to start!'
+  // document.getElementById('bottom-message-area').textContent = '';
 }
 
 /**
@@ -64,7 +64,8 @@ function addEventListenersToButtons() {
  * Starts the game
  */
 function playGame(event) {
-
+  //Clear the bottom message area
+  document.getElementById('bottom-message-area').textContent = ' ';
   // Fill the play area with random items
   let fullItemsList = createFullItemsList();
   let randomItemsList = generateRandomItems(fullItemsList);
@@ -77,14 +78,14 @@ function playGame(event) {
     button.removeEventListener('click', evaluateAnswer);
   }
 
-  document.getElementById('top-message-area').textContent = 'Try to remember whats on the board!'
+  document.getElementById('top-message-area').textContent = "Try to remember what's on the board!"
 
   //Disable the start button, and start a timer
   //Pass the timer function a callback to execute the next part of the game when the timer ends
   let startButton = document.getElementById('start-button');
   startButton.removeEventListener('click', playGame);
   startButton.setAttribute('disabled', true);
-  runTimer(timerAmount, function(){takeOneItem(randomItemsList)});
+  runTimer(timerAmount, function(){takeOneItem(randomItemsList)}, 'time-left-info');
 }
 
 /**
@@ -240,7 +241,7 @@ function getAnswerFromPlayer(randomItemsList, removedItem) {
       } 
     }
   }
-  document.getElementById('bottom-message-area').innerHTML = '';
+  document.getElementById('bottom-message-area').textContent = ' ';
 }
 
 /**
@@ -267,28 +268,30 @@ function evaluateAnswer(event) {
   //Wait a few seconds and start another round if the player has turns left
   //Otherwise, display end of game message
   if (playerState.turnsLeft > 0) {
-    runTimer(5, playGame);
+    document.getElementById('bottom-message-area').innerHTML = `Next round in <span id = "turn-end-timer"></span>`;
+    runTimer(5, playGame, 'turn-end-timer');
   } else {
-    document.getElementById('bottom-message-area').innerHTML += `<h2>That's the end of the game. You got ${playerState.score} right, well done!</h2>`;
-    runTimer(5, setUp);
+    document.getElementById('bottom-message-area').innerHTML = `That's the end of the game. You got ${playerState.score} right, well done! Press play to play again.`;
+    setUp();
   }
   
 }
 
 /**
  * Starts an asynchronous timer and updates the timer on the display
- * Accepts two parameters:
+ * Accepts three parameters:
  * TimeInSeconds is the number of seconds we want the timer to run;
- * callback is the function to be called when the timer has elapsed
+ * callback is the function to be called when the timer has elapsed;
+ * displayElementId is a string containing the DOM ID for the HTML element for the timer to update
  */
-async function runTimer(timeInSeconds, callback) {
+async function runTimer(timeInSeconds, callback, displayElementId) {
   // Code to set up an asynchronous timer adapated from https://masteringjs.io/tutorials/fundamentals/wait-1-second-then#:~:text=To%20delay%20a%20function%20execution,call%20fn%20after%201%20second.
-  let timerText = document.getElementById('time-left-info');
+  let timerText = document.getElementById(displayElementId);
   timerText.textContent = timeInSeconds;
   while (timeInSeconds > 0) {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    timeInSeconds--;
-    timerText.textContent = timeInSeconds;
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  timeInSeconds--;
+  timerText.textContent = timeInSeconds;
   }
 
   // Call the function passed in as the second parameter
