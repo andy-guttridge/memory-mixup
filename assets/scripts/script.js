@@ -271,7 +271,11 @@ function evaluateAnswer(event) {
     document.getElementById('bottom-message-area').innerHTML = `Next round in <span id = "turn-end-timer"></span>`;
     runTimer(5, playGame, 'turn-end-timer');
   } else {
-    document.getElementById('bottom-message-area').innerHTML = `That's the end of the game. You got ${playerState.score} right, well done! Press play to play again.`;
+    if (playerState.score > 0) {
+      document.getElementById('bottom-message-area').innerHTML = `That's the end of the game. You got ${playerState.score} right, well done! Press play to play again.`;
+    } else {
+      document.getElementById('bottom-message-area').innerHTML = `That's the end of the game. You didn't get any right this time. Press play to play again.`
+    }
     setUp();
   }
   
