@@ -2,7 +2,7 @@
 const numberOfPlayItems = 12; //The number of items required for each turn of the game
 const timerAmount = 8; //The allowed time per turn of the game in seconds
 const startingTurns = 5; //The number of turns at the start of a new game
-const playerState = {turnsLeft: 0, score: 0}; //Stores how many turns are left and score
+const playerState = {turnsLeft: 0, score: 0, isFirstGame: true}; //Stores how many turns are left and score
 
 
 // Call setUp() function when DOM has loaded
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', setUp(0))
  * Ensures event listeners are added to buttons and fills the play area with a random selection of items
  */
 function setUp() {
+
   addEventListenersToButtons();
   // Duplicates code in playGame() function. Can we get rid of repetition?
   let fullItemsList = createFullItemsList();
@@ -34,9 +35,12 @@ function setUp() {
   document.getElementById('turns-left-info').textContent = playerState.turnsLeft;
   document.getElementById('score-info').textContent = playerState.score;
 
-  //Update top message area and clear bottom message area
-  // document.getElementById('top-message-area').textContent = 'Press play to start!'
-  // document.getElementById('bottom-message-area').textContent = '';
+  //If this is the player's first game after the page has loaded, automatically display the instructions
+  if (playerState.isFirstGame) {
+    displayInstructions();
+    playerState.isFirstGame = false;
+  }
+
 }
 
 /**
@@ -303,8 +307,31 @@ async function runTimer(timeInSeconds, callback, displayElementId) {
 }
 
 /**
- * Displays the game instructions in response to the 'how to play the game' button
+ * Displays the game instructions in response to the 'how to play the game' button.
+ * Also called automatically when the page first loads.
  */
 function displayInstructions(event) {
-  console.log('Entered displayInstructions()');
+  
+  //Display the modal dialog elements and add HTML with instructions and a button to dismiss the dialog
+  document.getElementById('modal-background').style.display = 'block';
+  document.getElementById('modal-dialog').innerHTML = `
+    <h2>How to play</h2>
+    <p>Instructions on how to play the game will go here</p>
+    <br>
+    <button id = "ready-button">I'm ready!</button>
+  `;
+
+  //Add event listener to the button to call hideInstructions()
+  document.getElementById('ready-button').addEventListener('click', hideInstructions);
+}
+
+/**
+ * Hides the modal dialog with the instructions
+ */
+function hideInstructions(event) {
+  if (event.target.getAttribute('id') === 'ready-button') {
+    document.getElementById('modal-background').style.display = 'none';
+  } else {
+    throw('Unrecognised button passed to hideInstructions()')
+  }
 }
