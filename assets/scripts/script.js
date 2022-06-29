@@ -1,8 +1,7 @@
 /* ------------ Constant definitions ------------ */
 const numberOfPlayItems = 12; //The number of items required for each turn of the game
 const timerAmount = 8; //The allowed time per turn of the game in seconds
-const startingTurns = 5
-; //The number of turns at the start of a new game
+const startingTurns = 5; //The number of turns at the start of a new game
 const playerState = {turnsLeft: 0, score: 0}; //Stores how many turns are left and score
 
 
@@ -20,6 +19,13 @@ function setUp() {
   let randomItemsList = generateRandomItems(fullItemsList);
   fillPlayArea(randomItemsList);
 
+  //Display the question mark image for each of the answer buttons and remove any event listeners
+  let buttons = document.getElementsByClassName('answer-button');
+  for (button of buttons) {
+    button.setAttribute('src', `assets/images/question-mark.png`);
+    button.removeEventListener('click', evaluateAnswer);
+  }
+
   //Set turnsLeft and score to starting values
   playerState.turnsLeft = startingTurns;
   playerState.score = 0;
@@ -27,9 +33,6 @@ function setUp() {
   //Update score and turns left display
   document.getElementById('turns-left-info').textContent = playerState.turnsLeft;
   document.getElementById('score-info').textContent = playerState.score;
-
-  //Hide answer-container
-  document.getElementById('answer-container').style.display = 'none';
 }
 
 /**
@@ -63,8 +66,12 @@ function playGame(event) {
   let randomItemsList = generateRandomItems(fullItemsList);
   fillPlayArea(randomItemsList);
 
-  //Clear any messages left from previous rounds
-  document.getElementById('answer-container').style.display = 'none';
+  //Display the question mark image for each of the answer buttons and remove any event listeners
+  let buttons = document.getElementsByClassName('answer-button');
+  for (button of buttons) {
+    button.setAttribute('src', `assets/images/question-mark.png`);
+    button.removeEventListener('click', evaluateAnswer);
+  }
 
   //Disable the start button, and start a timer
   //Pass the timer function a callback to execute the next part of the game when the timer ends

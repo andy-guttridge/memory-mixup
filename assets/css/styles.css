@@ -7,19 +7,19 @@ h1, p {
   margin: 0.5rem 0 0.5rem 0;
 }
 
-p {
-  white-space: pre;
-}
-
 /* -------------------- Styles for header -------------------- */
 
 
 /* -------------------- Styles for controls area -------------------- */
 
+#player-info {
+  white-space: pre;
+}
+
 /* -------------------- Styles for answer area -------------------- */
 
 #answer-container {
-  display: none;
+  display: inline-block;
   width: 80%;
   background-color: cornflowerblue;
 }
