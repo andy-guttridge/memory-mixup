@@ -33,6 +33,10 @@ function setUp() {
   //Update score and turns left display
   document.getElementById('turns-left-info').textContent = playerState.turnsLeft;
   document.getElementById('score-info').textContent = playerState.score;
+
+  //Update top message area and clear bottom message area
+  document.getElementById('top-message-area').textContent = 'Press play to start!'
+  document.getElementById('bottom-message-area').textContent = '';
 }
 
 /**
@@ -61,7 +65,7 @@ function addEventListenersToButtons() {
  */
 function playGame(event) {
 
-  // Fill the pay areas with random items
+  // Fill the play area with random items
   let fullItemsList = createFullItemsList();
   let randomItemsList = generateRandomItems(fullItemsList);
   fillPlayArea(randomItemsList);
@@ -72,6 +76,8 @@ function playGame(event) {
     button.setAttribute('src', `assets/images/question-mark.png`);
     button.removeEventListener('click', evaluateAnswer);
   }
+
+  document.getElementById('top-message-area').textContent = 'Try to remember whats on the board!'
 
   //Disable the start button, and start a timer
   //Pass the timer function a callback to execute the next part of the game when the timer ends
@@ -179,6 +185,8 @@ function takeOneItem(randomItemsList) {
  * Adds event listeners to the answer buttons. Accepts the randomised array of items and the item selected to be removed as parameters.
  */
 function getAnswerFromPlayer(randomItemsList, removedItem) {
+  console.log('Correct answer is: ' + removedItem.name);
+  document.getElementById('top-message-area').textContent = 'Which item do you think is missing?'
   // randomButton determines which button is assigned the correct answer
   let randomButton = Math.floor(Math.random() * 3)
 
@@ -219,18 +227,20 @@ function getAnswerFromPlayer(randomItemsList, removedItem) {
           }
         }
 
-        //... and if it isn't a duplicate or the X, we can use it for our button
+        //... and if it isn't a duplicate or the X, we can use it for our button 
         if (!didFindItem) {
           answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
           answerButton.setAttribute('data-correct-answer', false);
+
+          //Add the name of the item as an attribute of the button for later use
+          answerButton.setAttribute('data-item-name', randomItem.name);
           newRandomItems.push(randomItem);
           i++;
         }
       } 
     }
   }
-  document.getElementById('answer-response').innerHTML = '';
-  document.getElementById('answer-container').style.display = 'inline-block';
+  document.getElementById('bottom-message-area').innerHTML = '';
 }
 
 /**
@@ -246,11 +256,12 @@ function evaluateAnswer(event) {
   //If the player selected the correct answer, increment score and display well done message
   //Otherwise, display hard luck message
   if (event.target.getAttribute('data-correct-answer') === 'true') {
-    document.getElementById('answer-response').innerHTML = "<h2>Well done, that's right!</h2>"
+    document.getElementById('top-message-area').textContent = "Well done, that's right!"
     playerState.score++;
     document.getElementById('score-info').textContent = playerState.score;
   } else {
-    document.getElementById('answer-response').innerHTML = "<h2>That's not right. Better luck next time.</h2>"
+    let chosenItem = event.target.getAttribute('data-item-name');
+    document.getElementById('top-message-area').textContent = `That's not right. The ${chosenItem} was missing. Better luck next time.`
   }
 
   //Wait a few seconds and start another round if the player has turns left
@@ -258,7 +269,7 @@ function evaluateAnswer(event) {
   if (playerState.turnsLeft > 0) {
     runTimer(5, playGame);
   } else {
-    document.getElementById('answer-response').innerHTML += `<h2>That's the end of the game. You got ${playerState.score} right, well done!</h2>`;
+    document.getElementById('bottom-message-area').innerHTML += `<h2>That's the end of the game. You got ${playerState.score} right, well done!</h2>`;
     runTimer(5, setUp);
   }
   
