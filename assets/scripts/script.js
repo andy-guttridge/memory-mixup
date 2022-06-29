@@ -232,8 +232,8 @@ function getAnswerFromPlayer(randomItemsList, removedItem) {
           answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
           answerButton.setAttribute('data-correct-answer', false);
 
-          //Add the name of the item as an attribute of the button for later use
-          answerButton.setAttribute('data-item-name', randomItem.name);
+          //Store the name of the correct item as an attribute of the button for use when we evaluate whether the player chose the correct answer
+          answerButton.setAttribute('data-correct-item-name', removedItem.name);
           newRandomItems.push(randomItem);
           i++;
         }
@@ -260,7 +260,7 @@ function evaluateAnswer(event) {
     playerState.score++;
     document.getElementById('score-info').textContent = playerState.score;
   } else {
-    let chosenItem = event.target.getAttribute('data-item-name');
+    let chosenItem = event.target.getAttribute('data-correct-item-name');
     document.getElementById('top-message-area').textContent = `That's not right. The ${chosenItem} was missing. Better luck next time.`
   }
 
