@@ -1,9 +1,9 @@
 (function(){
   /* ------------ Constant definitions ------------ */
-  const numberOfPlayItems = 12; //The number of items required for each turn of the game
-  const timerAmount = 8; //The allowed time per turn of the game in seconds
-  const startingTurns = 5; //The number of turns at the start of a new game
-  const playerState = {turnsLeft: 0, score: 0, isFirstGame: true}; //Stores how many turns are left and score
+  const NUMBER_OF_PLAY_ITEMS = 12; //The number of items required for each turn of the game
+  const TIMER_AMOUNT = 8; //The allowed time per turn of the game in seconds
+  const STARTING_TURNS = 5; //The number of turns at the start of a new game
+  const PLAYER_STATE = {turnsLeft: 0, score: 0, isFirstGame: true}; //Stores how many turns are left and score
 
   // Call setUp() function when DOM has loaded
   document.addEventListener('DOMContentLoaded', setUp(0)) 
@@ -28,17 +28,17 @@
     }
 
     //Set turnsLeft and score to starting values
-    playerState.turnsLeft = startingTurns;
-    playerState.score = 0;
+    PLAYER_STATE.turnsLeft = STARTING_TURNS;
+    PLAYER_STATE.score = 0;
 
     //Update score and turns left display
-    document.getElementById('turns-left-info').textContent = playerState.turnsLeft;
-    document.getElementById('score-info').textContent = playerState.score;
+    document.getElementById('turns-left-info').textContent = PLAYER_STATE.turnsLeft;
+    document.getElementById('score-info').textContent = PLAYER_STATE.score;
 
     //If this is the player's first game after the page has loaded, automatically display the instructions
-    if (playerState.isFirstGame) {
+    if (PLAYER_STATE.isFirstGame) {
       displayInstructions();
-      playerState.isFirstGame = false;
+      PLAYER_STATE.isFirstGame = false;
     }
 
   }
@@ -89,7 +89,7 @@
     let startButton = document.getElementById('start-button');
     startButton.removeEventListener('click', playGame);
     startButton.setAttribute('disabled', true);
-    runTimer(timerAmount, function(){takeOneItem(randomItemsList)}, 'time-left-info');
+    runTimer(TIMER_AMOUNT, function(){takeOneItem(randomItemsList)}, 'time-left-info');
   }
 
   /**
@@ -127,7 +127,7 @@
     //Empty array to hold the randomly selected items
     let randomItemsList = []; 
 
-    while (randomItemsList.length <= numberOfPlayItems - 1) {
+    while (randomItemsList.length <= NUMBER_OF_PLAY_ITEMS - 1) {
       //Create random integer no large than number of items we have to pick from
       let randomNumber = Math.floor(Math.random() * fullItemsList.length);
       //Add random item to array if it isn't already in there 
@@ -142,7 +142,7 @@
    * Fills the play area with items from the array passed in
    */
   function fillPlayArea(randomItemsList) {
-    for (let i = 0; i <= numberOfPlayItems - 1; i++) {
+    for (let i = 0; i <= NUMBER_OF_PLAY_ITEMS - 1; i++) {
 
       //Get reference to the current gameItemContainer
       let gameItemContainer = document.getElementById(`game-item${i}`);
@@ -255,15 +255,15 @@
   function evaluateAnswer(event) {
     
     //Decrement turns left and update display
-    playerState.turnsLeft--;
-    document.getElementById('turns-left-info').textContent = playerState.turnsLeft;
+    PLAYER_STATE.turnsLeft--;
+    document.getElementById('turns-left-info').textContent = PLAYER_STATE.turnsLeft;
 
     //If the player selected the correct answer, increment score and display well done message
     //Otherwise, display hard luck message
     if (event.target.getAttribute('data-correct-answer') === 'true') {
       document.getElementById('top-message-area').textContent = "Well done, that's right!"
-      playerState.score++;
-      document.getElementById('score-info').textContent = playerState.score;
+      PLAYER_STATE.score++;
+      document.getElementById('score-info').textContent = PLAYER_STATE.score;
     } else {
       let chosenItem = event.target.getAttribute('data-correct-item-name');
       document.getElementById('top-message-area').textContent = `That's not right. The ${chosenItem} was missing. Better luck next time.`
@@ -271,12 +271,12 @@
 
     //Wait a few seconds and start another turn if the player has turns left
     //Otherwise, display end of game message
-    if (playerState.turnsLeft > 0) {
+    if (PLAYER_STATE.turnsLeft > 0) {
       document.getElementById('bottom-message-area').innerHTML = `Next turn in <span id = "turn-end-timer"></span>`;
       runTimer(5, playGame, 'turn-end-timer');
     } else {
-      if (playerState.score > 0) {
-        document.getElementById('bottom-message-area').innerHTML = `That's the end of the game. You got ${playerState.score} right, well done! Press play to play again.`;
+      if (PLAYER_STATE.score > 0) {
+        document.getElementById('bottom-message-area').innerHTML = `That's the end of the game. You got ${PLAYER_STATE.score} right, well done! Press play to play again.`;
       } else {
         document.getElementById('bottom-message-area').innerHTML = `That's the end of the game. You didn't get any right this time. Press play to play again.`
       }
