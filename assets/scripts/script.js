@@ -23,7 +23,7 @@ function setUp() {
   //Display the question mark image for each of the answer buttons and remove any event listeners
   let buttons = document.getElementsByClassName('answer-button');
   for (button of buttons) {
-    button.setAttribute('src', `assets/images/question-mark.png`);
+    button.setAttribute('src', `assets/images/question-mark-img.png`);
     button.removeEventListener('click', evaluateAnswer);
   }
 
@@ -78,7 +78,7 @@ function playGame(event) {
   //Display the question mark image for each of the answer buttons and remove any event listeners
   let buttons = document.getElementsByClassName('answer-button');
   for (button of buttons) {
-    button.setAttribute('src', `assets/images/question-mark.png`);
+    button.setAttribute('src', `assets/images/question-mark-img.png`);
     button.removeEventListener('click', evaluateAnswer);
   }
 
