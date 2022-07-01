@@ -11,8 +11,7 @@ body {background-color: rgb(2, 4, 64);
   text-align: center;
   max-width: 1500px;
   margin: 0 auto;
-  /* Technique to darken background image using linear gradient taken from https://stackoverflow.com/questions/26621513/darken-css-background-image */
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/stripy-background-img.png');
+  background: url('../images/wood-img.png');
   background-size: contain;
 }
 
@@ -33,7 +32,7 @@ p {
 
 h2, p {
   margin: 0.5rem 0 0.5rem 0;
-  color: cornsilk;
+  color: white;
 }
 
 button {
@@ -41,8 +40,8 @@ button {
   font-family: 'Play', sans-serif;
   font-size: 1rem;
   border-radius: 8px;
-  padding: 0.25rem 1rem 0.25rem 1rem;
-  color: cornsilk;
+  padding: 0 0.5rem 0 0.5rem;
+  color: white;
 }
 
 .text-color1 {
@@ -74,31 +73,31 @@ button {
 /* -------------------- Styles for header -------------------- */
 
 header {
-  max-height: 8vh;
+  /* max-height: 8vh; */
   background-color: rgb(0, 0, 0, 0);
 }
 
 /* -------------------- Styles for controls area -------------------- */
 
 #controls-info-container {
-  max-height: 10vh;
+  /* max-height: 10vh; */
   background-color: rgb(0, 0, 0, 0)
 }
 
 #start-button {
   background-color: #8c0712;
-  color: cornsilk;
+  color: white;
 }
 
 #info-button {
   background-color: #3f7e91;
-  color: cornsilk;
+  color: white;
 }
 
 #play-info {
   display: inline-block;
   font-family: 'Play', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .play-info-inner {
@@ -128,7 +127,7 @@ header {
 #play-container {
   display: inline-block;
   width: 95%;
-  max-height: 52vh;
+  /* max-height: 52vh; */
   background-color:rgb(0, 0, 0, 0);
 }
 
@@ -141,7 +140,7 @@ header {
 /* -------------------- Styles for footer -------------------- */
 footer {
   margin: 0.25rem 0 0.25rem 0;
-  max-height: 2vh;
+  /* max-height: 2vh; */
 }
 
 footer p {
