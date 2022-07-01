@@ -10,17 +10,39 @@
 <body>
     <!-- Header including site title -->
   <header>
-    <h1>Memory Mix-up</h1>
+    <h1> 
+      <span class= "text-color1">M</span>
+      <span class= "text-color2">e</span>
+      <span class= "text-color3">m</span>
+      <span class= "text-color4">o</span>
+      <span class= "text-color5">r</span>
+      <span class= "text-color1">y </span>
+      <span class= "text-color2">M</span>
+      <span class= "text-color3">i</span>
+      <span class= "text-color4">x</span>
+      <span class= "text-color5">-</span>
+      <span class= "text-color1">u</span>
+      <span class= "text-color2">p</span>
+    </h1>
   </header>
 
-  <!-- The 'controls' section of the site containing buttons to start game and view instructions, plus game timer and current score -->
+  <!-- The 'controls' section of the site containing buttons to start game and view instructions, plus game timerm turns left and current score -->
   <section>
     <!-- Div to contain the area with the controls, the timer and the score-->
     <div id="controls-info-container">
       <button id="start-button">Play!</button>
       <button id="info-button">How to play</button>
-      <p id = 'play-info'>
-        Time left: <span id="time-left-info">0</span>     Turns left: <span id="turns-left-info">0</span>     Score: <span id="score-info">0</span>
+      <br>
+      <div id = "play-info">
+        <div class="text-color1 play-info-inner">
+          Time left: <span id="time-left-info">0</span>
+        </div>
+        <div class="text-color4 play-info-inner">
+          Turns left: <span id="turns-left-info">0</span>  
+        </div>   
+        <div class="text-color5 play-info-inner">
+          Score: <span id="score-info">0</span>
+        </div>
       </p>
 
     </div>
