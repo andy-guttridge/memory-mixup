@@ -7,7 +7,8 @@
   overflow: visible;
 }
 
-body {background-color: rgb(2, 4, 64);
+body {
+  background-color: rgb(2, 4, 64);
   text-align: center;
   max-width: 1500px;
   margin: 0 auto;
@@ -25,14 +26,14 @@ h1, h2 {
   font-family: 'Permanent Marker', cursive;
 }
 
-p {
-  /* font-family attribute values copied and pasted from fonts.google.com */
-  font-family: 'Play', sans-serif;
-}
-
 h2, p {
   margin: 0.5rem 0 0.5rem 0;
   color: white;
+}
+
+p {
+  /* font-family attribute values copied and pasted from fonts.google.com */
+  font-family: 'Play', sans-serif;
 }
 
 span {
@@ -74,17 +75,7 @@ button {
   background-size: contain;
 }
 
-/* -------------------- Styles for header -------------------- */
-
-header {
-  background-color: rgb(0, 0, 0, 0);
-}
-
 /* -------------------- Styles for controls area -------------------- */
-
-#controls-info-container {
-  background-color: rgb(0, 0, 0, 0)
-}
 
 #start-button {
   background-color: #8c0712;
@@ -128,7 +119,6 @@ header {
 #play-container {
   display: inline-block;
   width: 95%;
-  background-color:rgb(0, 0, 0, 0);
 }
 
 .game-item-container {
@@ -168,7 +158,7 @@ footer p {
 #modal-dialog {
   /* This styles the modal dialog box itself */
   background-color: #444;
-  margin: 20% auto; 
+  margin: 0% auto; 
   padding: 20px;
   border: 1px solid #DDD;
   width: 60%; 
@@ -179,6 +169,7 @@ footer p {
 }
 
 #ready-button {
+  /* #ready-button is not defined in index.html, it is added to the DOM via JavaScript */
   background-color: #3f7e91;
 }
 
@@ -217,8 +208,8 @@ footer p {
 
  @media (min-width: 900px) {
   
-    /* Site wide styles */
-   h1 {
+  /* Site wide styles */
+  h1 {
     font-size: 4rem;
   }
 
@@ -234,10 +225,10 @@ footer p {
     font-size: 1.5rem;
   }
 
-    /* Styles for header */
-    .title-container {
-      display: inline-block;
-    }
+  /* Styles for header */
+  .title-container {
+    display: inline-block;
+  }
 
   /*Styles for controls area */
   #play-info {
@@ -245,7 +236,6 @@ footer p {
   }
 
   /*  Styles for answer area  */
-
   .answer-button {
     max-width: 15%;
   }
@@ -255,18 +245,15 @@ footer p {
   }
 
   /*  Styles for main play area  */
-
   .game-item-container {
     width: 14%;
     padding-top: 14%;
   }
 
-    /*  Styles for footer  */
-
+  /*  Styles for footer  */
   footer p {
     font-size: 1rem;
-  } 
-   
+  }  
  } 
 
  /* -------------------- Devices wider than 800px and taller than 1100px (e.g. tablets) -------------------- */
@@ -274,59 +261,51 @@ footer p {
  @media /*(min-width: 800px) and*/ (min-height: 1100px) {
   
   /*  Site wide styles  */
-  
   h1 {
    font-size: 5rem;
- }
+  }
 
- h2 {
-  font-size: 3rem;
- }
+  h2 {
+    font-size: 3rem;
+  }
 
- p {
-  font-size: 2rem;
- }
+  p {
+    font-size: 2rem;
+  }
 
- button {
-  font-size: 2rem;
- }
+  button {
+    font-size: 2rem;
+  }
 
- /* Styles for header */
+  /* Styles for header */
+  .title-container {
+    display: inline-block;
+  }
 
- .title-container {
-  display: inline-block;
- }
+  /* Styles for controls area */
+  #play-info {
+    font-size: 2.25rem;
+  }
 
- /* Styles for controls area */
- #play-info {
-  font-size: 2.25rem;
- }
+  /*  Styles for answer area  */
+  #answer-container p {
+    font-size: 2rem;
+  }
 
- /*  Styles for answer area  */
- #answer-container p {
-  font-size: 2rem;
- }
+  .answer-button {
+    max-width: 20%;
+  }
 
- .answer-button {
-   max-width: 20%;
- }
+  /*  Styles for main play area  */
+  .game-item-container {
+    width: 20%;
+    padding-top: 20%;
+  }
 
- /*  Styles for main play area  */
-
- .game-item-container {
-   width: 20%;
-   padding-top: 20%;
- }
-
-   /*  Styles for footer  */
- footer {
-   max-height: 3vh;
- }
-
- footer p {
-   font-size: 2rem;
- }
-  
+  /*  Styles for footer  */
+  footer p {
+    font-size: 2rem;
+  } 
 }
 
 /* -------------------- Devices wider than 1000px and no taller than 900px (e.g. Nest Hub) -------------------- */
@@ -334,7 +313,6 @@ footer p {
 @media (min-width: 1000px) and (max-height: 900px) {
   
   /*  Site wide styles  */
-  
   h1 {
    font-size: 3rem;
  }
@@ -357,7 +335,6 @@ footer p {
  }
 
  /*  Styles for answer area  */
-
  .answer-button {
    max-width: 8%;
  }
@@ -367,17 +344,12 @@ footer p {
  }
 
  /*  Styles for main play area  */
-
  .game-item-container {
    width: 15%;
    padding-top: 15%;
  }
 
    /*  Styles for footer  */
- footer {
-   max-height: 3vh;
- }
-
  footer p {
    font-size: 1rem;
  }
@@ -406,14 +378,12 @@ footer p {
   font-size: 0.75rem;
  }
 
- /*  Styles for controls area  */
-
-
  /*  Styles for answer area  */
 
 .answer-button {
   width: 18%;
 }
+
 #answer-container p {
   font-size: 0.75rem;
 }
@@ -423,12 +393,6 @@ footer p {
  .game-item-container {
    width: 18%;
    padding-top: 18%;
- }
-
-   /*  Styles for footer  */
-
- footer p {
-   font-size: 0.75rem;
  }
   
 }
@@ -462,15 +426,12 @@ footer p {
  }
 
  /*  Styles for controls area  */
+
 #play-info {
   font-size: 0.75rem;
 }
  
  /*  Styles for answer area  */
-
- #answer-container {
-  height: 24vh;
-}
 
  .answer-button {
    max-width: 8%;
@@ -484,8 +445,8 @@ footer p {
  }
 
    /*  Styles for footer  */
+   
  footer {
-   max-height: 3vh;
    margin: 0.1rem 0 0.1rem 0;
  }
 
@@ -515,10 +476,6 @@ footer p {
   margin: 0.25rem 0 0.25rem 0;
  }
 
- button {
-  font-size: 1rem;
- }
-
  /* Styles for header */
 
  .title-container {
@@ -538,7 +495,7 @@ footer p {
  }
 
  #answer-container p {
-  font-size: 0.75rem;
+  font-size: 1rem;
  }
 
  /*  Styles for main play area  */
@@ -547,14 +504,7 @@ footer p {
    width: 7%;
    padding-top: 7%;
  }
-
-  /* Styles for footer */
-  footer p {
-    font-size: 0.75rem;
-  }
 }
-
-
 
 /* -------------------- Devices with a height less than 479px (e.g. Jiophone 2) -------------------- */
 
@@ -585,10 +535,6 @@ footer p {
   font-size: 0.5rem;
  }
 
- /* #answer-container p {
-  margin 0.1rem 0 0.1rem 0;
- } */
-
  /*  Styles for answer area  */
 
  .answer-button {
@@ -607,5 +553,4 @@ footer p {
  footer p {
    font-size: 0.5rem;
  }
-  
 }
