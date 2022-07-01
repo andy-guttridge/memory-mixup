@@ -1,33 +1,58 @@
+/* Google fonts import - code copied and pasted from fonts.google.com */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Play&display=swap');
+
 /* -------------------- Site wide styles -------------------- */
 * {
   z-index: 0;
   overflow: scroll;
 }
 
-body {background-color:thistle;
+body {background-color: rgb(2, 4, 64);
   text-align: center;
   max-width: 1500px;
   margin: 0 auto;
+  /* Technique to darken background image using linear gradient taken from https://stackoverflow.com/questions/26621513/darken-css-background-image */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/stripy-background-img.png');
+  background-size: contain;
 }
 
 h1 {
   font-size: 1.5rem;
 }
 
-h1, p {
+h1, h2 {
+  /* font-family attribute values copied and pasted from fonts.google.com */
+  font-family: 'Permanent Marker', cursive;
+}
+
+p {
+  /* font-family attribute values copied and pasted from fonts.google.com */
+  font-family: 'Play', sans-serif;
+}
+
+h1, h2, p {
   margin: 0.5rem 0 0.5rem 0;
+  color: #ffe8dd;
+}
+
+.game-image {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: solid #ffffff 0.1rem;
+  background-size: contain;
 }
 
 /* -------------------- Styles for header -------------------- */
 
 header {
   max-height: 8vh;
+  background-color: rgb(0, 0, 0, 0);
 }
 
 /* -------------------- Styles for controls area -------------------- */
 
 #controls-info-container {
   max-height: 10vh;
+  background-color: rgb(0, 0, 0, 0)
 }
 #player-info {
   white-space: pre;
@@ -39,7 +64,7 @@ header {
   display: inline-block;
   width: 95%;
   height: 24vh;
-  background-color: cornflowerblue;
+  background-color: rgb(0, 0, 0, 0)
 }
 
 #answer-container p {
@@ -56,15 +81,13 @@ header {
   display: inline-block;
   width: 95%;
   max-height: 52vh;
-  background-color:purple;
+  background-color:rgb(0, 0, 0, 0);
 }
 
 .game-item-container {
   display: inline-block;
   width: 24%;
   padding-top: 24%;
-  background: url("../images/question-mark-img.png") no-repeat;
-  background-size: contain;
 }
 
 /* -------------------- Styles for footer -------------------- */
@@ -98,7 +121,7 @@ footer p {
 
 #modal-dialog {
   /* This styles the modal dialog box itself */
-  background-color: #fefefe;
+  background-color: #04098c;
   margin: 15% auto; 
   padding: 20px;
   border: 1px solid #888;
