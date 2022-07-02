@@ -43,9 +43,8 @@
    * Ensures event listeners are added to buttons and fills the play area with a random selection of items
    */
   function setUp() {
-    // Duplicates code in playGame() function. Can we get rid of repetition?
-    let randomItemsList = generateRandomItems();
-    fillPlayArea(randomItemsList);
+    // Fill play area with random selection of items
+    fillPlayArea(generateRandomItems());
 
     //Display the question mark image for each of the answer buttons and disable them
     let buttons = document.getElementsByClassName('answer-button');
@@ -106,7 +105,7 @@
     //Clear the bottom message area
     document.getElementById('bottom-message-area').textContent = ' ';
     
-    // Fill the play area with random items
+    // Fill the play area with random items. The set of random items is stored in a variable as it is later passed to another function.
     let randomItemsList = generateRandomItems();
     fillPlayArea(randomItemsList);
 
@@ -203,7 +202,6 @@
 
     // randomItems[] is used to track which random items are picked for the buttons, so we don't repeat them
     let newRandomItems = [];
-
     let i = 0;
     
     // Loop until all three buttons have an image and ensure they are enabled
@@ -254,7 +252,6 @@
 
     //If the player selected the correct answer, increment score and display well done message
     //Otherwise, display hard luck message
-
     if (event.target.getAttribute('data-correct-answer') === 'true') {
       document.getElementById('top-message-area').textContent = "Well done, that's right!"
       PLAYER_STATE.score++;
