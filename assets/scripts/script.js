@@ -6,7 +6,7 @@
   const NUMBER_OF_PLAY_ITEMS = 12; 
 
   //The allowed time per turn of the game in seconds
-  const TIMER_AMOUNT = 2; 
+  const TIMER_AMOUNT = 30; 
 
   //The number of turns at the start of a new game
   const STARTING_TURNS = 5; 
@@ -103,7 +103,7 @@
    */
   function playGame() { 
     PLAYER_STATE.isFirstGame = false;
-    
+
     //Clear the bottom message area
     document.getElementById('bottom-message-area').textContent = ' ';
     
