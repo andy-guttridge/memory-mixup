@@ -151,7 +151,7 @@ footer p {
 
 #modal-background {
   /* This provides a transluscent background behind the dialog */
-  display: none;  
+  display: block;  
   position: fixed; 
   z-index: 1; 
   left: 0;
@@ -177,8 +177,13 @@ footer p {
   text-align: left;
 }
 
-#ready-button {
-  /* #ready-button is not defined in index.html, it is added to the DOM via JavaScript */
+.modal-inner-text {
+  /* .modal-innter-text is not defined in index.html, these are added to the DOM via JavaScript */
+  display: inline-block
+}
+
+#ok-button {
+  /* #ok-button is not defined in index.html, it is added to the DOM via JavaScript */
   background-color: #3f7e91;
 }
 
