@@ -13,18 +13,16 @@
    * Ensures event listeners are added to buttons and fills the play area with a random selection of items
    */
   function setUp() {
-
-    addEventListenersToButtons();
     // Duplicates code in playGame() function. Can we get rid of repetition?
     let fullItemsList = createFullItemsList();
     let randomItemsList = generateRandomItems(fullItemsList);
     fillPlayArea(randomItemsList);
 
-    //Display the question mark image for each of the answer buttons and remove any event listeners
+    //Display the question mark image for each of the answer buttons and disable them
     let buttons = document.getElementsByClassName('answer-button');
     for (button of buttons) {
       button.setAttribute('src', `assets/images/question-mark-img.png`);
-      button.removeEventListener('click', evaluateAnswer);
+      button.setAttribute('disabled', 'true');
     }
 
     //Set turnsLeft and score to starting values
@@ -35,16 +33,20 @@
     document.getElementById('turns-left-info').textContent = PLAYER_STATE.turnsLeft;
     document.getElementById('score-info').textContent = PLAYER_STATE.score;
 
-    //If this is the player's first game after the page has loaded, automatically display the instructions
+    //Ensure play button is enabled
+    document.getElementById('start-button').removeAttribute('disabled');
+
+    //If this is the player's first game after the page has loaded, automatically display the instructions and add event listeners to buttons
     if (PLAYER_STATE.isFirstGame) {
       displayInstructions();
+      addEventListenersToButtons();
       PLAYER_STATE.isFirstGame = false;
     }
 
   }
 
   /**
-   * Adds event listeners to the 'start' and 'how to play the game' buttons
+   * Adds event listeners to the 'start', 'how to play the game' and answer buttons
    * and removes the disabled attribute from the start button if it is present
    */
   function addEventListenersToButtons() {
@@ -58,9 +60,14 @@
         button.removeAttribute('disabled');
       } else if(button.getAttribute('id') === 'info-button') {
       button.addEventListener('click', displayInstructions);
-      } else {
-        throw('Unrecognised button passed to addEventListenersToButtons()');
-      }
+      } 
+    }
+
+    //Add event listeners to answer buttons
+    let answerButtons = document.getElementsByClassName('answer-button');
+    for (let button of answerButtons) {
+      button.addEventListener('click', evaluateAnswer);
+      console.log ('Added event listener to' + button)
     }
   }
 
@@ -75,11 +82,11 @@
     let randomItemsList = generateRandomItems(fullItemsList);
     fillPlayArea(randomItemsList);
 
-    //Display the question mark image for each of the answer buttons and remove any event listeners
+    //Display the question mark image for each of the answer buttons and disable them
     let buttons = document.getElementsByClassName('answer-button');
     for (button of buttons) {
       button.setAttribute('src', `assets/images/question-mark-img.png`);
-      button.removeEventListener('click', evaluateAnswer);
+      button.setAttribute('disable', 'true');
     }
 
     document.getElementById('top-message-area').textContent = "Try to remember what's on the board!"
@@ -87,7 +94,6 @@
     //Disable the start button, and start a timer
     //Pass the timer function a callback to execute the next part of the game when the timer ends
     let startButton = document.getElementById('start-button');
-    startButton.removeEventListener('click', playGame);
     startButton.setAttribute('disabled', true);
     runTimer(TIMER_AMOUNT, function(){takeOneItem(randomItemsList)}, 'time-left-info');
   }
@@ -199,10 +205,10 @@
     let newRandomItems = [];
 
     let i = 0;
-    // Loop until all three buttons have an image and event handler
+    // Loop until all three buttons have an image and ensure they are enabled
     while (i < 3) {
       let answerButton = document.getElementById(`answer-button${i}`);
-      answerButton.addEventListener('click', evaluateAnswer);
+      answerButton.removeAttribute('disabled');
       
       //If the button is the one selected for the correct answer, give it a data attribute in the DOM to mark it as correct and set its image to the missing item
       if (i === randomButton) {
@@ -258,8 +264,15 @@
     PLAYER_STATE.turnsLeft--;
     document.getElementById('turns-left-info').textContent = PLAYER_STATE.turnsLeft;
 
+    //Disable answer buttons
+    let answerButtons = document.getElementsByClassName('answer-button');
+    for (button of answerButtons) {
+      button.setAttribute('disabled', 'true');
+    }
+
     //If the player selected the correct answer, increment score and display well done message
     //Otherwise, display hard luck message
+
     if (event.target.getAttribute('data-correct-answer') === 'true') {
       document.getElementById('top-message-area').textContent = "Well done, that's right!"
       PLAYER_STATE.score++;
@@ -311,6 +324,8 @@
    * Also called automatically when the page first loads.
    */
   function displayInstructions(event) {
+    //Disable the 'how to play' button
+    document.getElementById('info-button').setAttribute('disabled', true);
     
     //Display the modal dialog elements and add HTML with instructions and a button to dismiss the dialog
     document.getElementById('modal-background').style.display = 'block';
@@ -334,5 +349,8 @@
     } else {
       throw('Unrecognised button passed to hideInstructions()')
     }
+
+    //Enable 'how to play' button
+    document.getElementById('info-button').removeAttribute('disabled');
   }
 })();
