@@ -1,12 +1,42 @@
 (function(){
   /* ------------ Constant definitions ------------ */
-  const NUMBER_OF_PLAY_ITEMS = 12; //The number of items required for each turn of the game
-  const TIMER_AMOUNT = 5; //The allowed time per turn of the game in seconds
-  const STARTING_TURNS = 5; //The number of turns at the start of a new game
-  const PLAYER_STATE = {turnsLeft: 0, score: 0, isFirstGame: true}; //Stores how many turns are left and score
+  //The number of items required for each turn of the game
+  const NUMBER_OF_PLAY_ITEMS = 12; 
+
+  //The allowed time per turn of the game in seconds
+  const TIMER_AMOUNT = 5; 
+
+  //The number of turns at the start of a new game
+  const STARTING_TURNS = 5; 
+
+  //Stores how many turns are left and score
+  const PLAYER_STATE = {turnsLeft: 0, score: 0, isFirstGame: true}; 
+
+  //Stores the full list of items available to populate the game
+  const FULL_ITEMS_LIST = [
+    {name:'book', image:'book-img.png'},
+    {name:'car', image:'car-img.png'},
+    {name:'cat', image:'cat-img.png'},
+    {name:'cheese', image:'cheese-img.png'},
+    {name:'cow', image:'cow-img.png'},
+    {name:'drum', image:'drum-img.png'},
+    {name:'duck', image:'duck-img.png'},
+    {name:'elephant', image:'elephant-img.png'},
+    {name:'fish', image:'fish-img.png'},
+    {name:'fork', image:'fork-img.png'},
+    {name:'guitar', image:'guitar-img.png'},
+    {name:'hat', image:'hat-img.png'},
+    {name:'house', image:'house-img.png'},
+    {name:'lamp', image:'lamp-img.png'},
+    {name:'owl', image:'owl-img.png'},
+    {name:'piano', image:'piano-img.png'},
+    {name:'table', image:'table-img.png'},
+    {name:'tree', image:'tree-img.png'},
+    {name:'umbrella', image:'umbrella-img.png'}
+];
 
   // Call setUp() function when DOM has loaded
-  document.addEventListener('DOMContentLoaded', setUp(0)) 
+  document.addEventListener('DOMContentLoaded', setUp) 
 
   /**
    * Sets things up for a new game.
@@ -14,8 +44,7 @@
    */
   function setUp() {
     // Duplicates code in playGame() function. Can we get rid of repetition?
-    let fullItemsList = createFullItemsList();
-    let randomItemsList = generateRandomItems(fullItemsList);
+    let randomItemsList = generateRandomItems();
     fillPlayArea(randomItemsList);
 
     //Display the question mark image for each of the answer buttons and disable them
@@ -36,13 +65,12 @@
     //Ensure play button is enabled
     document.getElementById('start-button').removeAttribute('disabled');
 
-    //If this is the player's first game after the page has loaded, automatically display the instructions and add event listeners to buttons
+    //If this is the player's first game after the page has loaded, display instructions and add event listeners to buttons
     if (PLAYER_STATE.isFirstGame) {
       displayInstructions();
       addEventListenersToButtons();
       PLAYER_STATE.isFirstGame = false;
     }
-
   }
 
   /**
@@ -74,12 +102,12 @@
   /**
    * Starts the game
    */
-  function playGame(event) { //Get rid of event parameter
+  function playGame() { 
     //Clear the bottom message area
     document.getElementById('bottom-message-area').textContent = ' ';
+    
     // Fill the play area with random items
-    let fullItemsList = createFullItemsList();
-    let randomItemsList = generateRandomItems(fullItemsList);
+    let randomItemsList = generateRandomItems();
     fillPlayArea(randomItemsList);
 
     //Display the question mark image for each of the answer buttons and disable them
@@ -99,46 +127,19 @@
   }
 
   /**
-   * Returns an array of objects, each of which represents the items for the game
-   */
-  function createFullItemsList() {
-    return [
-      {name:'book', image:'book-img.png'},
-      {name:'car', image:'car-img.png'},
-      {name:'cat', image:'cat-img.png'},
-      {name:'cheese', image:'cheese-img.png'},
-      {name:'cow', image:'cow-img.png'},
-      {name:'drum', image:'drum-img.png'},
-      {name:'duck', image:'duck-img.png'},
-      {name:'elephant', image:'elephant-img.png'},
-      {name:'fish', image:'fish-img.png'},
-      {name:'fork', image:'fork-img.png'},
-      {name:'guitar', image:'guitar-img.png'},
-      {name:'hat', image:'hat-img.png'},
-      {name:'house', image:'house-img.png'},
-      {name:'lamp', image:'lamp-img.png'},
-      {name:'owl', image:'owl-img.png'},
-      {name:'piano', image:'piano-img.png'},
-      {name:'table', image:'table-img.png'},
-      {name:'tree', image:'tree-img.png'},
-      {name:'umbrella', image:'umbrella-img.png'},
-    ];
-  }
-
-  /**
    * Returns an array of unique random items picked from the full list of available items
    */
-  function generateRandomItems(fullItemsList) {
-    
+  function generateRandomItems() {
     //Empty array to hold the randomly selected items
     let randomItemsList = []; 
 
     while (randomItemsList.length <= NUMBER_OF_PLAY_ITEMS - 1) {
       //Create random integer no large than number of items we have to pick from
-      let randomNumber = Math.floor(Math.random() * fullItemsList.length);
+      let randomNumber = Math.floor(Math.random() * FULL_ITEMS_LIST.length);
+
       //Add random item to array if it isn't already in there 
-      if (!randomItemsList.includes(fullItemsList[randomNumber])) { 
-        randomItemsList.push(fullItemsList[randomNumber])
+      if (!randomItemsList.includes(FULL_ITEMS_LIST[randomNumber])) { 
+        randomItemsList.push(FULL_ITEMS_LIST[randomNumber])
       }
     }
     return randomItemsList;
@@ -149,7 +150,6 @@
    */
   function fillPlayArea(randomItemsList) {
     for (let i = 0; i <= NUMBER_OF_PLAY_ITEMS - 1; i++) {
-
       //Get reference to the current gameItemContainer
       let gameItemContainer = document.getElementById(`game-item${i}`);
 
@@ -172,7 +172,6 @@
 
     //Loop while there are elements left to shuffle
     while (currentIndex != 0) {
-
       //Pick a random element of those that remain and then decrement the index 
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
@@ -198,13 +197,15 @@
   function getAnswerFromPlayer(randomItemsList, removedItem) {
     console.log('Correct answer is: ' + removedItem.name);
     document.getElementById('top-message-area').textContent = 'Which item do you think is missing?'
+
     // randomButton determines which button is assigned the correct answer
     let randomButton = Math.floor(Math.random() * 3)
 
-    // randomItems[] is used to track which random items are assigned to the buttons, so we don't repeat them
+    // randomItems[] is used to track which random items are picked for the buttons, so we don't repeat them
     let newRandomItems = [];
 
     let i = 0;
+    
     // Loop until all three buttons have an image and ensure they are enabled
     while (i < 3) {
       let answerButton = document.getElementById(`answer-button${i}`);
@@ -217,37 +218,19 @@
         i++;
       } else {
         //Otherwise find a random item that wasn't already on the board and add it to the button, unless its one we've already used or the big cross
-        let fullItemsList = createFullItemsList();
+      
         //Pick a random item from the full list of items
-        let randomItem = fullItemsList[Math.floor(Math.random() * fullItemsList.length)];
-        //didFindItem is used to record the outcome of checking whether the random item has already appeared on the board or already been selected for one of the answer buttons
-        let didFindItem = false;
+        let randomItem = FULL_ITEMS_LIST[Math.floor(Math.random() * FULL_ITEMS_LIST.length)];
+
         //Check if the random item was used on the board, that it isn't the correct answer, that it isn't the 'X' and that we haven't already used it for another answer button...
-        if (randomItem.name !== 'X' && randomItem.name !== removedItem.name) {
-          for (item of randomItemsList) {
-            if (item.name === randomItem.name || item.name === removedItem.name) {
-            didFindItem = true;
-            break;
-            }
+        if (!randomItemsList.includes(randomItem) && randomItem.name !== removedItem.name && randomItem.name !== 'X' && !newRandomItems.includes(randomItem)) {
+          answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
+          answerButton.setAttribute('data-correct-answer', false);
 
-            for (item of newRandomItems) {
-              if (item.name === randomItem.name) {
-                didFindItem = true;
-                break
-              }
-            }
-          }
-
-          //... and if it isn't a duplicate or the X, we can use it for our button 
-          if (!didFindItem) {
-            answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
-            answerButton.setAttribute('data-correct-answer', false);
-
-            //Store the name of the correct item as an attribute of the button for use when we evaluate whether the player chose the correct answer
-            answerButton.setAttribute('data-correct-item-name', removedItem.name);
-            newRandomItems.push(randomItem);
-            i++;
-          }
+          //Store the name of the correct item as an attribute of the button for use when we evaluate whether the player chose the correct answer
+          answerButton.setAttribute('data-correct-item-name', removedItem.name);
+          newRandomItems.push(randomItem);
+          i++;
         } 
       }
     }
@@ -259,7 +242,6 @@
    * Then starts a new turn or displays an end of game message as appropriate.
    */
   function evaluateAnswer(event) {
-    
     //Decrement turns left and update display
     PLAYER_STATE.turnsLeft--;
     document.getElementById('turns-left-info').textContent = PLAYER_STATE.turnsLeft;
@@ -295,7 +277,6 @@
       }
       setUp();
     }
-    
   }
 
   /**
@@ -323,7 +304,7 @@
    * Displays the game instructions in response to the 'how to play the game' button.
    * Also called automatically when the page first loads.
    */
-  function displayInstructions(event) {
+  function displayInstructions() {
     //Disable the 'how to play' button
     document.getElementById('info-button').setAttribute('disabled', true);
     
