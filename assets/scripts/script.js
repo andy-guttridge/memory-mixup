@@ -1,7 +1,7 @@
 (function(){
   /* ------------ Constant definitions ------------ */
   const NUMBER_OF_PLAY_ITEMS = 12; //The number of items required for each turn of the game
-  const TIMER_AMOUNT = 8; //The allowed time per turn of the game in seconds
+  const TIMER_AMOUNT = 5; //The allowed time per turn of the game in seconds
   const STARTING_TURNS = 5; //The number of turns at the start of a new game
   const PLAYER_STATE = {turnsLeft: 0, score: 0, isFirstGame: true}; //Stores how many turns are left and score
 
@@ -67,7 +67,7 @@
   /**
    * Starts the game
    */
-  function playGame(event) {
+  function playGame(event) { //Get rid of event parameter
     //Clear the bottom message area
     document.getElementById('bottom-message-area').textContent = ' ';
     // Fill the play area with random items

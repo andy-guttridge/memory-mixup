@@ -50,6 +50,11 @@ button {
   color: white;
 }
 
+button:disabled {
+  background-color: #444 !important; 
+  color:#ddd !important;
+}
+
 .text-color1 {
   color: #dbf73b;
 }
