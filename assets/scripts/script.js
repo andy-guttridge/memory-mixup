@@ -6,7 +6,7 @@
   const NUMBER_OF_PLAY_ITEMS = 12; 
 
   //The allowed time per turn of the game in seconds
-  const TIMER_AMOUNT = 30; 
+  const TIMER_AMOUNT = 2; 
 
   //The number of turns at the start of a new game
   const STARTING_TURNS = 5; 
@@ -70,7 +70,6 @@
     if (PLAYER_STATE.isFirstGame) {
       addEventListenersToButtons();
       displayInstructions();
-      PLAYER_STATE.isFirstGame = false;
     }
   }
 
@@ -103,6 +102,8 @@
    * Starts the game
    */
   function playGame() { 
+    PLAYER_STATE.isFirstGame = false;
+    
     //Clear the bottom message area
     document.getElementById('bottom-message-area').textContent = ' ';
     
@@ -388,7 +389,9 @@
     }
 
     //Enable 'play' and 'how to play' buttons
-    document.getElementById('start-button').removeAttribute('disabled');
+    if (PLAYER_STATE.turnsLeft<1 || PLAYER_STATE.isFirstGame === true) {
+      document.getElementById('start-button').removeAttribute('disabled');
+    }
     document.getElementById('info-button').removeAttribute('disabled');
 
     //If the player has no turns left, then call setup() to set up for a new game
