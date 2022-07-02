@@ -41,6 +41,14 @@ span {
   white-space: pre;
 }
 
+a {
+  color: aqua;
+}
+
+a:hover {
+  color: magenta;
+}
+
 button {
   /* font-family attribute values copied and pasted from fonts.google.com */
   font-family: 'Play', sans-serif;
