@@ -6,13 +6,13 @@
   const NUMBER_OF_PLAY_ITEMS = 12; 
 
   //The allowed time per turn of the game in seconds
-  const TIMER_AMOUNT = 30; 
+  const TIMER_AMOUNT = 3; 
 
   //The number of turns at the start of a new game
   const STARTING_TURNS = 5; 
 
   //Stores how many turns are left and score
-  const PLAYER_STATE = {turnsLeft: 0, score: 0, isFirstGame: true}; 
+  const PLAYER_STATE = {turnsLeft: 0, score: 0, isFirstGame: true, isPlaying: false}; 
 
   //Stores the full list of items available to populate the game
   const FULL_ITEMS_LIST = [
@@ -103,6 +103,7 @@
    */
   function playGame() { 
     PLAYER_STATE.isFirstGame = false;
+    PLAYER_STATE.isPlaying = true;
 
     //Clear the bottom message area
     document.getElementById('bottom-message-area').textContent = ' ';
@@ -210,7 +211,7 @@
     while (i < 3) {
       let answerButton = document.getElementById(`answer-button${i}`);
       answerButton.removeAttribute('disabled');
-      
+
       //If the button is the one selected for the correct answer, give it a data attribute in the DOM to mark it as correct and set its image to the missing item
       if (i === randomButton) {
         answerButton.setAttribute('data-correct-answer', true);
@@ -218,12 +219,12 @@
         i++;
       } else {
         //Otherwise find a random item that wasn't already on the board and add it to the button, unless its one we've already used or the big cross
-      
+        
         //Pick a random item from the full list of items
         let randomItem = FULL_ITEMS_LIST[Math.floor(Math.random() * FULL_ITEMS_LIST.length)];
 
-        //Check if the random item was used on the board, that it isn't the correct answer, that it isn't the 'X' and that we haven't already used it for another answer button...
-        if (!randomItemsList.includes(randomItem) && randomItem.name !== removedItem.name && randomItem.name !== 'X' && !newRandomItems.includes(randomItem)) {
+        //Check if the random item is valid as one of the player options and set as the value for the answer button if it is
+        if (checkItemValid(randomItem, randomItemsList, removedItem, newRandomItems)) {
           answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
           answerButton.setAttribute('data-correct-answer', false);
 
@@ -234,7 +235,24 @@
         } 
       }
     }
+    //Make sure the bottom message area is clear of text
     document.getElementById('bottom-message-area').textContent = ' ';
+  }
+
+  /**
+   * Checks whether a game item is a valid choice to populate an answer button
+   * @param {Object} randomItem - a random game item to be checked for validity to populate one of the answer buttons
+   * @param {Array} randomItemsList - array of random game items currently used to populate the game board
+   * @param {Object} removedItem - the game item that has been removed from the board and is the correct answer
+   * @param {Array} newRandomItems - array of game items that have already been selected to populate the answer buttons
+   * @returns {boolean} - returns true if the randomItem is valid to populate the answer button
+   */
+  function checkItemValid(randomItem, randomItemsList, removedItem, newRandomItems) {
+    //Check if the random item was used on the board, that it isn't the correct answer, that it isn't the 'X' and that we haven't already used it for another answer button
+    if (!randomItemsList.includes(randomItem) && randomItem.name !== removedItem.name && randomItem.name !== 'X' && !newRandomItems.includes(randomItem)) {
+      return true;
+    }
+    return false;
   }
 
   /**
@@ -269,6 +287,7 @@
       document.getElementById('bottom-message-area').innerHTML = `Next turn in <span id = "turn-end-timer"></span>`;
       runTimer(5, playGame, 'turn-end-timer');
     } else {
+        PLAYER_STATE.isPlaying = false;
         runTimer(2, endGameMessage, null);
       }
   }
@@ -326,7 +345,6 @@
    * Shows a game over message in a modal dialog at the end of the game
    */
   function endGameMessage() {
-    console.log ('Entered end game message')
     /* Create appropriate html message depending on whether the player scored any points */
     let message = '';
     if (PLAYER_STATE.score > 0) {
@@ -389,7 +407,7 @@
     }
 
     //Enable 'play' and 'how to play' buttons
-    if (PLAYER_STATE.turnsLeft<1 || PLAYER_STATE.isFirstGame === true) {
+    if (!PLAYER_STATE.isPlaying) {
       document.getElementById('start-button').removeAttribute('disabled');
     }
     document.getElementById('info-button').removeAttribute('disabled');
