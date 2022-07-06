@@ -239,7 +239,7 @@
         if (checkItemValid(randomItem, randomItemsList, removedItem, newRandomItems)) {
           answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
           answerButton.setAttribute('data-correct-answer', false);
-          answerButton.setAttribute('aria-label', `Answer option - ${randomItem.name}`
+          answerButton.setAttribute('aria-label', `Answer option - ${randomItem.name}`)
 
           //Store the name of the correct item as an attribute of the button for use when we evaluate whether the player chose the correct answer
           answerButton.setAttribute('data-correct-item-name', removedItem.name);
