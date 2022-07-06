@@ -89,6 +89,12 @@ button:disabled {
   background-size: contain;
 }
 
+/* -------------------- Styles for the header -------------------- */
+
+#header-link {
+  text-decoration: none;
+}
+
 /* -------------------- Styles for controls area -------------------- */
 
 #start-button {
@@ -171,7 +177,7 @@ footer p {
   background-color: rgba(0,0,0,0.4); 
 }
 
-#modal-dialog {
+.modal-dialog {
   /* This styles the modal dialog box itself */
   background-color: #444;
   margin: 30vh auto; 
@@ -181,18 +187,24 @@ footer p {
   width: 60%; 
 }
 
-#modal-dialog p {
+.modal-dialog p {
   text-align: left;
 }
 
 .modal-inner-text {
-  /* .modal-innter-text is not defined in index.html, these are added to the DOM via JavaScript */
+  /* .modal-inner-text is not defined in index.html, these are added to the DOM via JavaScript */
   display: inline-block
 }
 
 #ok-button {
   /* #ok-button is not defined in index.html, it is added to the DOM via JavaScript */
   background-color: #3f7e91;
+}
+
+/* -------------------- Styles for 404 error modal -------------------- */
+
+#modal-dialog-404 {
+  margin: 10vh auto;
 }
 
 /* -------------------- Media Queries -------------------- */

@@ -402,7 +402,7 @@
     
     //Display the modal dialog elements and add HTML with instructions and a button to dismiss the dialog
     document.getElementById('modal-background').style.display = 'block';
-    document.getElementById('modal-dialog').innerHTML = content;
+    document.getElementById('game-modal').innerHTML = content;
 
     //Add event listener to the button to call hideInstructions()
     let okButton = document.getElementById('ok-button');
