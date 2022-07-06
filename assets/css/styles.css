@@ -214,7 +214,7 @@ footer p {
 
 /* -------------------- Media Queries -------------------- */
 
-/* -------------------- Devices between 630px and 899px width -------------------- */
+/* -------------------- Devices between 630px and 899px width in portrait mode -------------------- */
 
 @media (min-width: 550px) and (max-width: 899px) and (orientation: portrait) {
   
@@ -263,7 +263,7 @@ footer p {
     font-size: 1.5rem;
   }
 }
-/* -------------------- Devices wider than 900px (captures larger monitors) -------------------- */
+/* -------------------- Devices wider than 900px -------------------- */
 
  @media (min-width: 900px) {
   
@@ -319,11 +319,17 @@ footer p {
   footer p {
     font-size: 1rem;
   }  
+
+  /* Styles for the modal dialog */
+
+  .modal-dialog p {
+    font-size: 1.5rem;
+  }
  } 
 
- /* -------------------- Devices wider than 800px and taller than 1100px (e.g. tablets) -------------------- */
+ /* -------------------- Devices taller than 1100px (e.g. tablets) -------------------- */
 
- @media /*(min-width: 800px) and*/ (min-height: 1100px) {
+ @media (min-height: 1100px) {
   
   /*  Site wide styles  */
 
@@ -377,6 +383,12 @@ footer p {
   footer p {
     font-size: 2rem;
   } 
+
+  /* Styles for the modal dialog */
+
+  .modal-dialog p {
+    font-size: 2rem;
+  }
 }
 
 /* -------------------- Devices wider than 1000px and no taller than 900px (e.g. Nest Hub) -------------------- */
@@ -472,6 +484,31 @@ footer p {
   }
 }
 
+/* -------------------- Devices with a height less than 479px (e.g. Jiophone 2) -------------------- */
+
+@media (max-height: 479px) and (orientation: portrait) {
+  /* Site wide styles */
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  /* Styles for modal dialog */
+  
+  #modal-background {
+    position: absolute;
+    overflow: visible;
+  }
+
+  .modal-dialog {
+    margin: 20% auto;
+  }
+
+  .modal-dialog p {
+    font-size: 1rem;
+  }
+}
+
 /* -------------------- Devices up to 500px wide in landscape mode -------------------- */
 
 @media (max-width: 550px) and (orientation: landscape) {
@@ -541,7 +578,6 @@ footer p {
   /*Site wide styles */
 
   h1 {
-    font-size: 2rem;
     margin: 0.25rem 0 0.25rem 0;
   }
 
@@ -566,11 +602,13 @@ footer p {
   }
 
   /* Styles for answer area */
+
   .answer-button {
     max-width: 9%;
   }
  
   /*  Styles for main play area  */
+  
   .game-item-container {
     width: 9%;
     padding-top: 9%;
@@ -580,10 +618,6 @@ footer p {
 
   .modal-dialog {
     margin: 10% auto;
-  }
-
-  .modal-dialog p {
-    font-size: 1rem;
   }
 }
 
@@ -613,20 +647,10 @@ footer p {
   display: inline-block;
  }
 
- /*  Styles for controls area  */
- 
- #play-info {
-  font-size: 1rem;
- }
-
  /*  Styles for answer area  */
 
  .answer-button {
    max-width: 7%;
- }
-
- #answer-container p {
-  font-size: 1rem;
  }
 
  /*  Styles for main play area  */
@@ -635,28 +659,4 @@ footer p {
    width: 7%;
    padding-top: 7%;
  }
-}
-
-/* -------------------- Devices with a height less than 479px (e.g. Jiophone 2) -------------------- */
-
-@media (max-height: 479px) and (orientation: portrait) {
-  /* Site wide styles */
-
-  h2 {
-    font-size: 1.25rem;
-  }
-  /* Styles for modal dialog */
-  
-  #modal-background {
-    position: absolute;
-    overflow: visible;
-  }
-
-  .modal-dialog {
-    margin: 20% auto;
-  }
-
-  .modal-dialog p {
-    font-size: 1rem;
-  }
 }
