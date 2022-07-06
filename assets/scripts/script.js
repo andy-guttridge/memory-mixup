@@ -1,8 +1,7 @@
 /* Script wrapped in anonymous function to limit scope of constants */
-
 (function(){
   /* ------------ Constant definitions ------------ */
-  //The number of items required for each turn of the game
+  //The number of items required on the game board for each turn of the game
   const NUMBER_OF_PLAY_ITEMS = 12; 
 
   //The allowed time per turn of the game in seconds
@@ -49,10 +48,12 @@
     fillPlayArea(generateRandomItems());
 
     //Display the question mark image for each of the answer buttons and disable them
+    //And set appropriate aria-labels
     let buttons = document.getElementsByClassName('answer-button');
     for (let button of buttons) {
       button.setAttribute('src', `assets/images/question-mark-img.png`);
       button.setAttribute('disabled', 'true');
+      button.setAttribute('aria-label', 'Answer button - inactive');
     }
 
     //Set turnsLeft and score to starting values
@@ -113,10 +114,12 @@
     fillPlayArea(randomItemsList);
 
     //Display the question mark image for each of the answer buttons and disable them
+    //And set appropriate aria-labels
     let buttons = document.getElementsByClassName('answer-button');
     for (let button of buttons) {
       button.setAttribute('src', `assets/images/question-mark-img.png`);
       button.setAttribute('disable', 'true');
+      button.setAttribute('aria-label', 'Answer button - inactive');
     }
 
     document.getElementById('top-message-area').textContent = "Try to remember what's on the board!";
@@ -160,8 +163,9 @@
       //Retrieve the filename for the item and concatenate to the full file location  
       let imageFileNameString = `URL("assets/images/${randomItemsList[i].image}")`; 
 
-      //Display the image via CSS backgroundImage property
+      //Display the image via CSS backgroundImage property and set an appropriate aria-label
       gameItemContainer.style.backgroundImage = imageFileNameString; 
+      gameItemContainer.setAttribute('aria-label', `Game board item - ${randomItemsList[i].name}`)
     }
   }
 
@@ -218,9 +222,11 @@
       answerButton.removeAttribute('disabled');
 
       //If the button is the one selected for the correct answer, give it a data attribute in the DOM to mark it as correct and set its image to the missing item
+      //And set an appropriate aria-label
       if (i === randomButton) {
         answerButton.setAttribute('data-correct-answer', true);
         answerButton.setAttribute('src', `assets/images/${removedItem.image}`);
+        answerButton.setAttribute('aria-label', `Answer option - ${removedItem.name}`)
         i++;
       } else {
         //Otherwise find a random item that wasn't already on the board and add it to the button, unless its one we've already used or the big cross
@@ -229,9 +235,11 @@
         let randomItem = FULL_ITEMS_LIST[Math.floor(Math.random() * FULL_ITEMS_LIST.length)];
 
         //Check if the random item is valid as one of the player options and set as the value for the answer button if it is
+        //And set an appropriate aria-label
         if (checkItemValid(randomItem, randomItemsList, removedItem, newRandomItems)) {
           answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
           answerButton.setAttribute('data-correct-answer', false);
+          answerButton.setAttribute('aria-label', `Answer option - ${randomItem.name}`
 
           //Store the name of the correct item as an attribute of the button for use when we evaluate whether the player chose the correct answer
           answerButton.setAttribute('data-correct-item-name', removedItem.name);
