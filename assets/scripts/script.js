@@ -41,7 +41,7 @@
   document.addEventListener('DOMContentLoaded', setUp); 
 
   /**
-   * Sets things up for a new game.
+   * Sets up for a new game.
    * Ensures event listeners are added to buttons and fills the play area with a random selection of items
    */
   function setUp() {
@@ -130,6 +130,7 @@
 
   /**
    * Returns an array of unique random items picked from the full list of available items
+   * @return {Array} array of unique random game items
    */
   function generateRandomItems() {
     //Empty array to hold the randomly selected items
@@ -149,6 +150,7 @@
 
   /**
    * Fills the play area with items from the array passed in
+   *  @param {Array} randomItemsList - an array of game items to populate the game board
    */
   function fillPlayArea(randomItemsList) {
     for (let i = 0; i <= NUMBER_OF_PLAY_ITEMS - 1; i++) {
@@ -166,6 +168,7 @@
   /**
    * Randomly shuffles the array of items passed in, removes and replaces one item in the array with a big X
    * and passes the shuffled array and the removed item to the next function
+   * @param {Array} randomItemsList - an array of game items to be shuffled and one item swapped for the X
    */
   function takeOneItem(randomItemsList) {
     //Algorithm to randomly shuffle an array taken from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -195,6 +198,8 @@
   /**
    * Asks player which item is missing. Gives them three buttons to choose from, one of which is correct.
    * Adds event listeners to the answer buttons. Accepts the randomised array of items and the item selected to be removed as parameters.
+   * @param {Array} randomItemsList - an array of game items which were used to populate the game board
+   * @param {Array} removedItem - the game item that was randomly selected for removal from the game board
    */
   function getAnswerFromPlayer(randomItemsList, removedItem) {
     console.log('Correct answer is: ' + removedItem.name);
@@ -241,9 +246,9 @@
 
   /**
    * Checks whether a game item is a valid choice to populate an answer button
-   * @param {Object} randomItem - a random game item to be checked for validity to populate one of the answer buttons
+   * @param {Object} randomItem - random game item to be checked for validity to populate one of the answer buttons
    * @param {Array} randomItemsList - array of random game items currently used to populate the game board
-   * @param {Object} removedItem - the game item that has been removed from the board and is the correct answer
+   * @param {Object} removedItem - game item that has been removed from the board and is the correct answer
    * @param {Array} newRandomItems - array of game items that have already been selected to populate the answer buttons
    * @returns {boolean} - returns true if the randomItem is valid to populate the answer button
    */
@@ -258,6 +263,7 @@
   /**
    * Evaluates the answer selected by the player, updates the score and number of turns left.
    * Then starts a new turn or displays an end of game message as appropriate.
+   * @param {event} event - event triggered by the player selecting an answer button
    */
   function evaluateAnswer(event) {
     //Decrement turns left and update display
@@ -298,6 +304,9 @@
    * TimeInSeconds is the number of seconds we want the timer to run;
    * callback is the function to be called when the timer has elapsed;
    * displayElementId is optional. It is a string containing the DOM ID for the HTML element for the timer to update
+   * @param {number} timeInSeconds -  number of seconds for the timer to run
+   * @param {callback} callback - function to be called when the timer has completed
+   * @param {string} displayElementId - the DOM ID for the HTML element for the timer to update (this param is optional)
    */
   async function runTimer(timeInSeconds, callback, displayElementId) {
     // Code to set up an asynchronous timer adapated from https://masteringjs.io/tutorials/fundamentals/wait-1-second-then#:~:text=To%20delay%20a%20function%20execution,call%20fn%20after%201%20second.
@@ -376,7 +385,7 @@
 
   /**
    * Shows a modal dialog, disables 'play' and 'how to play' buttons and creates an event listener for an ok button in the modal.
-   * Takes one parameter, which is html content for the modal
+   * @param {string} content - html content to be displayed in the modal dialog
    */
   function showModal(content) {
     //Disable the 'play' and 'how to play' buttons
@@ -398,6 +407,7 @@
 
   /**
    * Hides the modal dialog and enables 'play' and 'how to play' buttons
+   * @param {event} event - event triggered by the player clicking the ok-button
    */
   function hideModal(event) {
     if (event.target.getAttribute('id') === 'ok-button') {
