@@ -413,6 +413,11 @@ footer p {
   font-size: 1rem;
   }
 
+  /* Styles for header */
+  .title-container {
+    display: inline-block;
+  }
+
   /* Styles for controls area */
 
  #play-info {
