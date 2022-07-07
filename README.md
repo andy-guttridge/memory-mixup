@@ -135,7 +135,7 @@ Creating a responsive and inclusive design was a particularly challenging aspect
 The following media queries were implemented to achieve responsivity and inclusiveness, with specific changes to the sizing of the logo, fonts, the answer buttons and the game board items to fit as many devices as possible:
 
 - For devices between 550px and 899px width in portrait orientation
-- For devices wider than 899px in portrait orientation
+- For devices wider than 899px
 - For devices of 1100px height or more in portrait orientation
 - For devices with a height less than 568px and at least 480px in portrait orientation
 - For devices with a height less than 480px in portrait orientation 
@@ -174,9 +174,20 @@ The answer buttons and the items on the main game board have a dark semi-transcl
 
 ### Fonts
 
+Fonts were sourced from [Google Fonts](https://fonts.google.com/). 'Permanent Marker' was chosen for the logo and headings for its playful quality, and 'Play' was chosen for the rest of the text because it highly legible yet friendly looking.   
+
 ### Features Left to Implement
 
+With the relaxation of the aim to eliminate all vertical scrolling, all planned features were successfully implemented.
+Ideas for future development could include:
+
+- Allowing the player to enter their name at the start of a new game, and using this to populate a high scores league table.
+- Implementing a difficulty level option based on allowing more or less time for each turn.
+- Implementing a CSS 'card flipping' animation as a transition between each turn and when the game board items are randomised.
+
 ## Testing 
+
+The site was tested regularly throughout development using Google Chrome on Mac OS and Windows 10, and in Safari on Mac OS and on an iPhone XR. The Google Chrome development tools were used to preview the site on a wide range of mobile device sizes from the JeoPhone 2, Galaxy Fold, iPhone 4, iPhone 5/SE, iPhone XR, the Nest Hub, Microsoft Lumia 550, Samsung Galaxy A51/71, Pixel 5, iPad, iPad Air and iPad Pro. In addition to enabling a large range of devices to be covered by the media queries, use of the responsive setting in the development tools revealed that the site looked quite sparse on monitors wider than 1500px, so a decision was taken to limit the width of the `<body>` element to 1500px and centre the site on large monitors.
 
 ### Validator Testing 
 

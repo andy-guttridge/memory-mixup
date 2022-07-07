@@ -263,9 +263,9 @@ footer p {
     font-size: 1.5rem;
   }
 }
-/* -------------------- Devices wider than 899px in portrait mode -------------------- */
+/* -------------------- Devices wider than 899px -------------------- */
 
- @media (min-width: 900px) and (orientation: portrait) {
+ @media (min-width: 900px) {
   
   /* Site wide styles */
 
