@@ -126,25 +126,51 @@ The 404 error page addresses objectives 2 and 4.
 
 A key aim for Memory Mix-up is for it to be playable and attractively presented on as wide a variety of devices as possible, in the interests of inclusivity. A mobile first approach was taken, with the iPhone 5/SE chosen as the 'base' target for the site, as this is an older device at the smaller end of the range of screen sizes available within the Google Chrome development tools. 
 
-One of the original objectives was for the site to fit onto the screen of all devices simulated within the Google Chrome development tools without any vertical scrolling, as the need to scroll was felt to detract from the game. Testing revealed that eliminating vertical scrolling resulted in the game being so small as to be practically unplayable on very small devices such as the JioPhone2, therefore this objective was relaxed. The revised aim was to minimise the need for vertical scrolling for the majority of devices, but to accept that it may be necessary in some cases. This objective included aiming for an attractive presentation on landscape devices as well as portrait, though achieving no vertical scrolling on every device in both portrait and landscape orientations proved impractical. However the site provides a good experience for the vast majority of devices in portrait orientation, with many also able to view the site in landscape with little or no vertical scrolling required. 
+One of the original objectives was for the site to fit onto the screen of all devices simulated within the Google Chrome development tools without any vertical scrolling, as the need to scroll was felt to detract from the game. Testing revealed that eliminating vertical scrolling resulted in the game being so small as to be practically unplayable on very small devices such as the JioPhone2, therefore this objective was relaxed. The revised aim was to minimise the need for vertical scrolling for the majority of devices, but to accept that it may be necessary in some cases. 
+
+This objective included aiming for an attractive presentation on landscape devices as well as portrait, though achieving no vertical scrolling on every device in both portrait and landscape orientations proved impractical. However the site provides a good experience for the vast majority of devices in portrait orientation, with many also able to view the site in landscape with little or no vertical scrolling, and specific attention given to landscape only devices (e.g. the Nest Hub). 
 
 Creating a responsive and inclusive design was a particularly challenging aspect of the project, given the desire to manage the vertical dimensions of the game and minimise vertical scrolling as well as respond to the width of devices.
 
 The following media queries were implemented to achieve responsivity and inclusiveness, with specific changes to the sizing of the logo, fonts, the answer buttons and the game board items to fit as many devices as possible:
 
 - For devices between 550px and 899px width in portrait orientation
-- For devices wider than 900px in portrait orientation
-- For devices taller than 1100px in portrait orientation
-- For devices with a height less than 567px and more than 480px in portrait orientation
-- For devices with a height less than 479px in portrait orientation 
-- For devices wider than 1000px and no taller than 900px (e.g. the Nest Hub)
+- For devices wider than 899px in portrait orientation
+- For devices of 1100px height or more in portrait orientation
+- For devices with a height less than 568px and at least 480px in portrait orientation
+- For devices with a height less than 480px in portrait orientation 
+- For devices with a width of 1000px or greater and no taller than 900px (e.g. the Nest Hub)
 - For devices up to 550px wide in landscape orientation
 - For devices between 550px and 749px wide in landscape orientation
 - For devices between 750px and 960px wide in landscape orientation
 
 ### Planning
 
-### Colours
+The features of the site were 'mocked-up' using a basic wireframe of the features of the site when displayed on a mobile screen prior to implementation. Some minor changes were made to the layout of the site after development began in order to improve the game experience, for example the 'answer area' was up above the main game board, and the number of items on the game board was reduced from 16 to 12.
+
+<p align="center">
+  <img src="readme_assets/wireframe.png" alt="Wireframe mock-up" width="300px">
+</p>
+
+### Colours and background
+
+A mix of vivid colours for the logo and the player information was chosen, based on experimentation to achieve an attractive selection and sufficient contrast against the grey background. The colours are:
+
+- Green: `#dbf73b` 
+- Yellow: `#ffee64`
+- Orange: `#ff9b0b`
+- Red: `#ff0d21`
+- Blue: `#6eddff`
+
+White text was chosen for other in game text and the borders for the answer buttons and the game board items, to provide maximum contrast against the dark background.
+
+A dark red (`#8c0712`) and a dark blue (`#3f7e91`) were chosen for the 'Play!' and 'How to play' buttons, to complement the colours in the logo and provide contrast against the writing on the buttons. A dark grey (`#444`) background and light grey text (`#ddd`) were chosen for the buttons in their disabled state to clearly indicate when they are not selectable.
+
+The standard CSS `aqua` colour was chosen for standard text links on the basis that this is a higher contrast variation of the blue colour typically used for links, with the CSS `magenta` colour used as the 'hover over' colour to provide an obvious contrast.
+
+A dark black and white image of some wooden planks was chosen as a background for the site, in order to provide a pleasant, non-distracting and high contrast background suitable for a wide range of screen sizes. The `body` of the site has a very dark grey (`rgb(2, 4, 64)`) fallback colour to ensure a high contrast with the foreground elements should the background fail to load. 
+
+The answer buttons and the items on the main game board have a dark semi-transcluscent background (`rgb(0, 0, 0, 0.5)`) to ensure sufficient contrast against the background image.
 
 ### Fonts
 

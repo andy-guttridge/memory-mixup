@@ -263,7 +263,7 @@ footer p {
     font-size: 1.5rem;
   }
 }
-/* -------------------- Devices wider than 900px in portrait mode -------------------- */
+/* -------------------- Devices wider than 899px in portrait mode -------------------- */
 
  @media (min-width: 900px) and (orientation: portrait) {
   
@@ -327,7 +327,7 @@ footer p {
   }
  } 
 
- /* -------------------- Devices taller than 1100px in portrait orientation (e.g. tablets) -------------------- */
+ /* -------------------- Devices 1100px height and up in portrait orientation (e.g. tablets) -------------------- */
 
  @media (min-height: 1100px) and (orientation: portrait) {
   
@@ -391,7 +391,7 @@ footer p {
   }
 }
 
-/* -------------------- Devices wider than 1000px and no taller than 900px (e.g. Nest Hub) -------------------- */
+/* -------------------- Devices of width 1000px and higher and no taller than 900px (e.g. Nest Hub) -------------------- */
 
 @media (min-width: 1000px) and (max-height: 900px) {
   
@@ -448,7 +448,7 @@ footer p {
  }
 }
 
-/* -------------------- Devices with a height less than 567px and more than 480px in portrait -------------------- */
+/* -------------------- Devices with a height less than 568px and at least 480px in portrait -------------------- */
 
 @media (min-height: 480px) and (max-height: 567px) and (orientation:portrait) {
   
@@ -489,7 +489,7 @@ footer p {
   }
 }
 
-/* -------------------- Devices with a height less than 479px in portrait (e.g. Jiophone 2) -------------------- */
+/* -------------------- Devices with a height less than 480px in portrait (e.g. Jiophone 2) -------------------- */
 
 @media (max-height: 479px) and (orientation: portrait) {
   /* Site wide styles */
