@@ -1,14 +1,14 @@
 # Memory Mix-up
 
 <p align="center">
-  <img src="readme_assets/mm-multidevice.png" alt="Header image for the Readme file" align="center">
+  <img src="readme_assets/mm-multidevice.png" alt="Header image for the Readme file" align="center" width="800">
 </p>
 
 Memory Mix-up is a browser based memory game for children and adults, based on the traditional [Kim's Game](https://en.wikipedia.org/wiki/Kim%27s_Game). 
 
-A random selection of objects is placed on the game board, and the player has 30 seconds to memorise them. An object is then removed, the order of the remaining objects is mixed up, and the player guesses which object they think is missing. 
+A random selection of items is placed on the game board, and the player has 30 seconds to memorise them. An item is then removed, the order of the remaining objects is mixed up, and the player guesses which item they think is missing. 
 
-In this implementation, the player is given a choice of three possible answers, one of which is the original object, while the other two are random objects not among those on the game board. The player has five turns, with a score out of five at the end of the game.
+In this implementation, the player is given a choice of three possible answers, one of which is the correct item, while the other two are random items not among those on the game board. The player has five turns, with a score out of five at the end of the game.
 
 ## Objectives
 
@@ -25,7 +25,7 @@ The objectives of the site are:
 
 - [Features](#features)
   - [Mobile first design](#mobile-first-design)
-  - [Colourful header/logo](#colourful-logo)
+  - [Colourful logo](#colourful-logo)
   - [Controls and information area](#controls-and-information-area)
   - [Answer area](#answer-area)
   - [Main game board](#main-game-board)
@@ -41,9 +41,9 @@ The objectives of the site are:
   - [Features left to implement](#features-left-to-implement)
 - [Testing](#testing)
   - [Validator testing](#validator-testing)
-    -[W3C HTML validator](#w3c-html-validator)
-    -[W3C CSS validator](#w3c-css-validator)
-    -[JSHint JavaScript validator](#jshint-javascript-validator)
+    - [W3C HTML validator](#w3c-html-validator)
+    - [W3C CSS validator](#w3c-css-validator)
+    - [JSHint JavaScript validator](#jshint-javascript-validator)
   - [Lighthouse testing](#lighthouse-testing)
   - [Unfixed bugs](#unfixed-bugs)
 - [Deployment](#deployment)
@@ -62,7 +62,7 @@ The game was designed around the iPhone 5/SE screen size to ensure it is playabl
 The mobile first design addresses objectives 2, 3 and 4.
 
 <p align="center">
-  <img src="readme_assets/mobile-game-screen.png" alt="Main screen of game on mobile" width = "250px">
+  <img src="readme_assets/mobile-game-screen.png" alt="Main screen of game on mobile" width = "250">
 </p>
 
 ### Colourful logo
@@ -72,7 +72,7 @@ The game features a colourful header/logo, designed to be both eye catching and 
 The logo addresses objectives 3 and 4.
 
 <p align="center">
-  <img src="readme_assets/mm-logo.png" alt="Game logo" width = "250px">
+  <img src="readme_assets/mm-logo.png" alt="Game logo" width = "250">
 </p>
 
 ### Controls and information area
@@ -83,7 +83,7 @@ This area also features some key information - the amount of time left for the c
 This controls and information area addresses objectives 1, 2 and 3.
 
 <p align="center">
-  <img src="readme_assets/controls-info-area.png" alt="Controls and information area" width = "250px">
+  <img src="readme_assets/controls-info-area.png" alt="Controls and information area" width = "250">
 </p>
 
 ### Answer area
@@ -95,10 +95,10 @@ The answer area also features two dynamic message areas where various in game me
 The answer area addresses objectives 1, 2, 3 and 4.
 
 <p align="center">
-  <img src="readme_assets/answer-area-1.png" alt="Answer area with disabled answer buttons" width = "250px">
-  <img src="readme_assets/answer-area-2.png" alt="Answer area with prompt to provide answer" width = "250px">
-  <img src="readme_assets/answer-area-3.png" alt="Answer area with hard luck message" width = "250px">
-  <img src="readme_assets/answer-area-4.png" alt="Answer area with well done message" width = "250px">
+  <img src="readme_assets/answer-area-1.png" alt="Answer area with disabled answer buttons" width = "250">
+  <img src="readme_assets/answer-area-2.png" alt="Answer area with prompt to provide answer" width = "250">
+  <img src="readme_assets/answer-area-3.png" alt="Answer area with hard luck message" width = "250">
+  <img src="readme_assets/answer-area-4.png" alt="Answer area with well done message" width = "250">
 </p>
 
 ### Main game board
@@ -108,8 +108,8 @@ The main game board is the area where a random selection of objects for the play
 This feature addresses objectives 1, 3 and 4.
 
 <p align="center">
-  <img src="readme_assets/game-board-1.png" alt="Main game board with selection of objects" width = "250px">
-  <img src="readme_assets/game-board-2.png" alt="Main game board with one object removed" width = "250px">
+  <img src="readme_assets/game-board-1.png" alt="Main game board with selection of objects" width = "250">
+  <img src="readme_assets/game-board-2.png" alt="Main game board with one object removed" width = "250">
 </p>
 
 ### Footer
@@ -117,7 +117,7 @@ This feature addresses objectives 1, 3 and 4.
 The site features a footer with a link to the creator's GitHub profile. The footer is responsive to device size and therefore addresses objective 4.
 
 <p align="center">
-  <img src="readme_assets/footer.png" alt="Footer with link to creator's GitHub profile" width = "250px">
+  <img src="readme_assets/footer.png" alt="Footer with link to creator's GitHub profile" width = "250">
 </p>
 
 ### How To Play modal dialog
@@ -127,7 +127,7 @@ Instructions for the game are provided by a modal dialog which appears when the 
 This feature addresses objectives 2, 3 and 4.
 
 <p align="center">
-  <img src="readme_assets/how-to-play.png" alt="How to play modal dialog" width = "250px">
+  <img src="readme_assets/how-to-play.png" alt="How to play modal dialog" width = "250">
 </p>
 
 ### Game over modal dialog
@@ -137,8 +137,8 @@ After the final turn of the game, the player is presented with a modal dialog co
 The game over modal dialog addresses objectives 2, 3 and 4.
 
 <p align="center">
-  <img src="readme_assets/game-over-modal-1.png" alt="Game over modal dialog with well done message" width = "250px">
-  <img src="readme_assets/game-over-modal-2.png" alt="Game over modal dialog with zero score message" width = "250px">
+  <img src="readme_assets/game-over-modal-1.png" alt="Game over modal dialog with well done message" width = "250">
+  <img src="readme_assets/game-over-modal-2.png" alt="Game over modal dialog with zero score message" width = "250">
 </p>
 
 ### 404 Error page
@@ -147,7 +147,7 @@ A 404 error page to notify the user if they attempt to access a non-existent pag
 The 404 error page addresses objectives 2 and 4.
 
 <p align="center">
-  <img src="readme_assets/404.png" alt="404 page" width="250px">
+  <img src="readme_assets/404.png" alt="404 page" width="250">
 </p>
 
 ## Design
@@ -158,7 +158,7 @@ A key aim for Memory Mix-up is for it to be playable and attractively presented 
 
 One of the original objectives was for the site to fit onto the screen of all devices simulated within the Google Chrome development tools without any vertical scrolling, as the need to scroll was felt to detract from the game. Testing revealed that eliminating vertical scrolling resulted in the game being so small as to be practically unplayable on very small devices such as the JioPhone2, therefore this objective was relaxed. The revised aim was to minimise the need for vertical scrolling for the majority of devices, but to accept that it may be necessary in some cases. 
 
-This objective included aiming for an attractive presentation on landscape devices as well as portrait, though achieving no vertical scrolling on every device in both portrait and landscape orientations proved impractical. However the site provides a good experience for the vast majority of devices in portrait orientation, with many also able to view the site in landscape with little or no vertical scrolling, and specific attention given to landscape only devices (e.g. the Nest Hub). 
+This objective included aiming for an attractive presentation on landscape devices as well as portrait, though achieving no vertical scrolling on every device in both portrait and landscape orientations proved impractical. However the site provides a pleasing experience for the vast majority of devices in portrait orientation, with many also able to view the site in landscape with little or no vertical scrolling, and specific attention given to landscape only devices (e.g. the Nest Hub). 
 
 Creating a responsive and inclusive design was a particularly challenging aspect of the project, given the desire to manage the vertical dimensions of the game and minimise vertical scrolling as well as respond to the width of devices.
 
@@ -176,10 +176,10 @@ The following media queries were implemented to achieve responsivity and inclusi
 
 ### Planning
 
-The features of the site were 'mocked-up' using a basic wireframe of the features of the site when displayed on a mobile screen prior to implementation. Some minor changes were made to the layout of the site after development began in order to improve the game experience, for example the 'answer area' was up above the main game board, and the number of items on the game board was reduced from 16 to 12.
+The features of the site were 'mocked-up' using a basic wireframe of the features of the site when displayed on a mobile screen prior to implementation. Some minor changes were made to the layout of the site after development began in order to improve the game experience, for example the 'answer area' was moved above the main game board, and the number of items on the game board was reduced from 16 to 12.
 
 <p align="center">
-  <img src="readme_assets/wireframe.png" alt="Wireframe mock-up" width="300px">
+  <img src="readme_assets/wireframe.png" alt="Wireframe mock-up" width="300">
 </p>
 
 ### Colours and background
@@ -192,19 +192,19 @@ A mix of vivid colours for the logo and the player information was chosen, based
 - Red: `#ff0d21`
 - Blue: `#6eddff`
 
-White text was chosen for other in game text and the borders for the answer buttons and the game board items, to provide maximum contrast against the dark background.
+White was chosen for other in game text and the borders for the answer buttons and the game board items, to provide maximum contrast against the dark background.
 
 A dark red (`#8c0712`) and a dark blue (`#3f7e91`) were chosen for the 'Play!' and 'How to play' buttons, to complement the colours in the logo and provide contrast against the writing on the buttons. A dark grey (`#444`) background and light grey text (`#ddd`) were chosen for the buttons in their disabled state to clearly indicate when they are not selectable.
 
 The standard CSS `aqua` colour was chosen for standard text links on the basis that this is a higher contrast variation of the blue colour typically used for links, with the CSS `magenta` colour used as the 'hover over' colour to provide an obvious contrast.
 
-A dark black and white image of some wooden planks was chosen as a background for the site, in order to provide a pleasant, non-distracting and high contrast background suitable for a wide range of screen sizes. The `body` of the site has a very dark grey (`rgb(2, 4, 64)`) fallback colour to ensure a high contrast with the foreground elements should the background fail to load. 
+A dark black and white image of some wooden planks was chosen as a background for the site, in order to provide a pleasant, non-distracting and high contrast background suitable for a wide range of screen sizes. The `body` of the site has a very dark blue (`rgb(2, 4, 64)`) fallback colour to ensure a high contrast with the foreground elements should the background fail to load. 
 
-The answer buttons and the items on the main game board have a dark semi-transcluscent background (`rgb(0, 0, 0, 0.5)`) to ensure sufficient contrast against the background image.
+The answer buttons and the items on the main game board have a dark semi-transcluscent background (`rgba(0, 0, 0, 0.5)`) to ensure sufficient contrast against the background image.
 
 ### Fonts
 
-Fonts were sourced from [Google Fonts](https://fonts.google.com/). 'Permanent Marker' was chosen for the logo and headings for its playful quality, and 'Play' was chosen for the rest of the text because it highly legible yet friendly looking.   
+Fonts were sourced from [Google Fonts](https://fonts.google.com/). 'Permanent Marker' was chosen for the logo and headings for its playful quality, and 'Play' was chosen for the rest of the text because it is highly legible yet friendly looking.   
 
 ### Features Left to Implement
 
@@ -217,7 +217,7 @@ Ideas for future development could include:
 
 ## Testing 
 
-The site was tested regularly throughout development using Google Chrome on Mac OS and Windows 10, and in Safari on Mac OS and on an iPhone XR. The Google Chrome development tools were used to preview the site on a wide range of mobile device sizes from the JeoPhone 2, Galaxy Fold, iPhone 4, iPhone 5/SE, iPhone XR, the Nest Hub, Microsoft Lumia 550, Samsung Galaxy A51/71, Pixel 5, iPad, iPad Air and iPad Pro. In addition to enabling a large range of devices to be covered by the media queries, use of the responsive setting in the development tools revealed that the site looked quite sparse on monitors wider than 1500px, so a decision was taken to limit the width of the `<body>` element to 1500px and centre the site on large monitors.
+The site was tested regularly throughout development using Google Chrome on Mac OS, and in Safari on Mac OS and on an iPhone XR. The Google Chrome development tools were used to preview the site on a wide range of mobile device sizes including the JeoPhone 2, Galaxy Fold, iPhone 4, iPhone 5/SE, iPhone XR, the Nest Hub, Microsoft Lumia 550, Samsung Galaxy A51/71, Pixel 5, iPad, iPad Air and iPad Pro (among others). In addition to enabling a large range of devices to be covered by the media queries, use of the responsive setting in the development tools revealed that the site looked quite sparse on monitors wider than 1500px, so a decision was taken to limit the width of the `<body>` element to 1500px and centre the site on large monitors.
 
 The time allowed per turn was typically set to just a few seconds throughout testing, to allow whole turns and games to be played through quickly. This enabled a wide range of game states and sequences of player actions to be tested. `console.log()` statements were used liberally throughout testing to examine the condition of specific variables at key steps. One key piece of data output to the console is the correct answer for each turn - this enabled rapid testing of the game's responses to both correct and incorrect answers. This `console.log()` has been left in, as it is assumed the average player would not activate the console.
 
@@ -245,15 +245,15 @@ The W3C validator found no issues with `assets/css/styles.css`.
 JSHint was configured to assume that ES6 JavaScript features are acceptable, given these were introduced in 2015.
 JSHint produced one warning about the use of ES8 syntax (`async function`). [caniuse.com](https://caniuse.com/async-functions) demonstrates this feature is implemented by the majority of browsers and estimates it is available for 96.15% of users across mobile and desktop devices. This was felt to be an acceptably high proportion.
 
-JSHint demonstrated that all functions within `assets/scripts/script.js` had a cyclomatic complexity of 5 or below, with the exception of the `getAnswerFromPlayer()` function, which had a cyclomatic complexity of 7. Researching the topic revealed [this blog post](https://elijahmanor.com/blog/control-the-complexity-of-your-javascript-functions-with-jshint) from Elijah Manor which cites a recommendation in Code Complete by Steve McConnell that a cyclomatic complexity above 5 is worthy of further investigation.
+JSHint demonstrated that all functions within `assets/scripts/script.js` had a cyclomatic complexity of 5 or below, with the exception of the `getAnswerFromPlayer()` function, which had a cyclomatic complexity of 7. Researching the topic revealed [this blog post](https://elijahmanor.com/blog/control-the-complexity-of-your-javascript-functions-with-jshint) from Elijah Manor, which cites a recommendation in Code Complete by Steve McConnell that a cyclomatic complexity above 5 is worthy of further investigation.
 
-The `getAnswerFromPlayer()` function was refactored and some functionality split out into a new `checkItemValid()` function. This reduced the cyclomatic complexity of `getAnswerFromPlayer` down to 5, but at the expense of introducing a new function also with a cyclomatic complexity of 5 and requiring 4 parameters. This was deemed acceptable for the time being, however further refactoring these two functions would have been a focus given more time, and may be worth revisiting in future.
+The `getAnswerFromPlayer()` function was refactored and some functionality split out into a new `checkItemValid()` function. This reduced the cyclomatic complexity of `getAnswerFromPlayer()` down to 5, but at the expense of introducing a new function also with a cyclomatic complexity of 5 and requiring 4 parameters. This was deemed acceptable for the time being, however further refactoring these two functions would have been a focus given more time, and may be worth revisiting in future.
 
 JSHint also detected numerous missing semi-colons, which were inserted.
 
 ### Lighthouse testing
 
-The Lighthouse in the Google Chrome developer tools highlighted that a number of `aria-labels` on the `<div>` elements used for the game board items did not match the aria `role` attribute. Given the images in these elements change frequently, `aria-label` attributes are added programmatically via JavaScript, and no `role` attribute had been set.
+The Lighthouse report in the Google Chrome developer tools highlighted that a number of `aria-labels` on the `<div>` elements used for the game board items did not match the aria `role` attribute. Given the images in these elements change frequently, `aria-label` attributes are added programmatically via JavaScript, and no `role` attribute had been set.
 
 <p align="center">
   <img src="readme_assets/lighthouse-aria.png" alt="Extract of lighthouse report showing issue with aria-labels" width="600">
@@ -298,12 +298,12 @@ All bugs identified during development and testing have been fixed.
 ### Code
 
 - HTML and CSS code to create a modal dialog was adapated from a [W3 Schools tutoral](https://www.w3schools.com/howto/howto_css_modals.asp)
-- Code to import Google Fonts and font-family attribute values were copied and pasted from [Google Fonts](fonts.google.com)
+- Code to import Google Fonts and font-family attribute values were copied and pasted from [Google Fonts](https://fonts.google.com/)
 - The algorithm to randomly shuffle an array in the `takeOneItem()` function was taken from [Stack Overflow](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 - Code to implement an asynchronous timer was adapted from a [Mastering JS](https://masteringjs.io/tutorials/fundamentals/wait-1-second-then#:~:text=To%20delay%20a%20function%20execution,call%20fn%20after%201%20second) article
 - This [mdn web docs](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) article on callback functions was referenced when implementing the `runTimer` function
-- This [Stack Overflow](https://stackoverflow.com/questions/13286233/pass-a-javascript-function-as-parameter) question about using an anonymous function as a wrapper for passing a function with parameters as the value for a callback was referenced when implementing the the call of `runTimer()` in the `playGame()` function
-- This [Stack Overflow](https://stackoverflow.com/questions/4190792/should-i-use-a-global-variable-and-if-not-what-instead-javascript) article was referenced with respect to options for avoiding global variables, resulting in the decision to wrap all of the JavaScript inside an anonymous function
+- This [Stack Overflow](https://stackoverflow.com/questions/13286233/pass-a-javascript-function-as-parameter) question was referenced to discover how to use an anonymous function as a wrapper for passing a function with arguments as the value for a callback when implementing the the call of `runTimer()` in the `playGame()` function
+- This [Stack Overflow](https://stackoverflow.com/questions/4190792/should-i-use-a-global-variable-and-if-not-what-instead-javascript) question was referenced with respect to options for avoiding global variables, resulting in the decision to wrap all of the JavaScript inside an anonymous function
 
 ### Media
 
@@ -339,7 +339,7 @@ House: https://pixabay.com/vectors/cottage-house-home-building-little-160367/
 
 Lamp: https://pixabay.com/vectors/desk-lamp-lamp-night-office-red-147523/
 
-Owl: https://pixabay.com/vectors/automobile-car-red-french-old-1300467/
+Owl: https://pixabay.com/vectors/raccoon-owl-fox-application-1157728/
 
 Piano: https://pixabay.com/vectors/grand-piano-piano-music-161447/
 
@@ -349,7 +349,7 @@ Table: https://pixabay.com/vectors/table-grey-silver-flat-couch-308862/
 
 Tree: https://pixabay.com/vectors/trees-forest-nature-woods-flora-146748/
 
-Umbrellla: https://pixabay.com/vectors/umbrella-color-rain-colorful-water-1767541/
+Umbrella: https://pixabay.com/vectors/umbrella-color-rain-colorful-water-1767541/
 
 #### Background Image
 

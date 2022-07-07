@@ -127,7 +127,6 @@ button:disabled {
 #answer-container {
   display: inline-block;
   width: 95%;
-  background-color: rgb(0, 0, 0, 0)
 }
 
 #answer-container p {
