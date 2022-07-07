@@ -189,6 +189,13 @@ Ideas for future development could include:
 
 The site was tested regularly throughout development using Google Chrome on Mac OS and Windows 10, and in Safari on Mac OS and on an iPhone XR. The Google Chrome development tools were used to preview the site on a wide range of mobile device sizes from the JeoPhone 2, Galaxy Fold, iPhone 4, iPhone 5/SE, iPhone XR, the Nest Hub, Microsoft Lumia 550, Samsung Galaxy A51/71, Pixel 5, iPad, iPad Air and iPad Pro. In addition to enabling a large range of devices to be covered by the media queries, use of the responsive setting in the development tools revealed that the site looked quite sparse on monitors wider than 1500px, so a decision was taken to limit the width of the `<body>` element to 1500px and centre the site on large monitors.
 
+The time allowed per turn was typically set to just a few seconds throughout testing, to allow whole turns and games to be played through quickly. This enabled a wide range of game states and sequences of player actions to be tested. `console.log()` statements were used liberally throughout testing to examine the condition of specific variables at key steps. One key piece of data output to the console is the correct answer for each turn - this enabled rapid testing of the game's responses to both correct and incorrect answers. This `console.log()` has been left in, as it is assumed the average player would not activate the console.
+
+Bugs encountered and fixed during development included:
+
+- A bug causing the timer not to decrement in the JavaScript `runTimer()` function. The Google Chrome JavaScript debugger was used to step through each instruction, which enabled the bug to be isolated and fixed.
+- A bug causing the 'Play!' button not to be enabled after completing a game and then selecting the 'How to play' button. An `isPlaying` boolean variable was added to the `PLAYER_STATE` object to track whether a game is currently in progress, which allows a straightforward test to determine whether the 'Play!' button should be re-enabled after the 'How to play' modal dialog is dismissed.
+
 ### Validator Testing 
 
 #### W3C HTML Validator
