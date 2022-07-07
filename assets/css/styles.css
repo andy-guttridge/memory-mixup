@@ -95,7 +95,7 @@ button:disabled {
 
 /* -------------------- Styles for the header -------------------- */
 
-#header-link {
+.header-link {
   text-decoration: none;
 }
 
