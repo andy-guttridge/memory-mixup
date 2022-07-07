@@ -10,8 +10,6 @@ A random selection of objects is placed on the game board, and the player has 30
 
 In this implementation, the player is given a choice of three possible answers, one of which is the original object, while the other two are random objects not among those on the game board. The player has five turns, with a score out of five at the end of the game.
 
-## Table of Contents
-
 ## Objectives
 
 The objectives of the site are:
@@ -22,6 +20,38 @@ The objectives of the site are:
 4. To deliver a responsive design that allows the game to be played on as wide a range of devices as possible, while maintaining the visual appeal and integrity of the site.
 
 **Link to deployed site:** (https://andy-guttridge.github.io/memory-mixup/)
+
+## Table of Contents
+
+- [Features](#features)
+  - [Mobile first design](#mobile-first-design)
+  - [Colourful header/logo](#colourful-logo)
+  - [Controls and information area](#controls-and-information-area)
+  - [Answer area](#answer-area)
+  - [Main game board](#main-game-board)
+  - [Footer](#footer)
+  - [How To Play modal dialog](#how-to-play-modal-dialog)
+  - [Game Over modal dialog](#game-over-modal-dialog)
+  - [404 error page](#404-error-page)
+- [Design](#design)
+  - [Responsiveness](#responsiveness)
+  - [Planning](#planning)
+  - [Colours and background](#colours-and-background)
+  - [Fonts](#fonts)
+  - [Features left to implement](#features-left-to-implement)
+- [Testing](#testing)
+  - [Validator testing](#validator-testing)
+    -[W3C HTML validator](#w3c-html-validator)
+    -[W3C CSS validator](#w3c-css-validator)
+    -[JSHint JavaScript validator](#jshint-javascript-validator)
+  - [Lighthouse testing](#lighthouse-testing)
+  - [Unfixed bugs](#unfixed-bugs)
+- [Deployment](#deployment)
+- [Credits](#credits)
+  - [Code](#code)
+  - [Media](#media)
+
+
 
 ## Features 
 
@@ -35,7 +65,7 @@ The mobile first design addresses objectives 2, 3 and 4.
   <img src="readme_assets/mobile-game-screen.png" alt="Main screen of game on mobile" width = "250px">
 </p>
 
-### Colourful header/logo
+### Colourful logo
 
 The game features a colourful header/logo, designed to be both eye catching and clear to read. The logo is a clickable link to the site, however as there is only a single page it is unlikely this feature will be used much, and for that reason a decision was taken not to compromise the visual appeal of the logo by underlining it or having it highlighted by the mouse pointer.
 
