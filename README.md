@@ -1,108 +1,176 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Memory Mix-up
 
-Welcome Andy G,
+<p align="center">
+  <img src="readme_assets/mm-multidevice.png" alt="Header image for the Readme file" align="center">
+</p>
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Memory Mix-up is a browser based memory game for children and adults, based on the traditional [Kim's Game](https://en.wikipedia.org/wiki/Kim%27s_Game). 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+A random selection of objects is placed on the game board, and the player has 30 seconds to memorise them. An object is then removed, the order of the remaining objects is mixed up, and the player guesses which object they think is missing. 
 
-## Gitpod Reminders
+In this implementation, the player is given a choice of three possible answers, one of which is the original object, while the other two are random objects not among those on the game board. The player has five turns, with a score out of five at the end of the game.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Table of Contents
 
-`python3 -m http.server`
+## Objectives
 
-A blue button should appear to click: _Make Public_,
+The objectives of the site are:
 
-Another blue button should appear to click: _Open Browser_.
+1. To present the user with a simple and fun game which tests and exercises the memory.
+2. To provide simple and clear instructions, and clearly guide the player along the path through the game.
+3. To present the game in a visually appealing and uncluttered style.
+4. To deliver a responsive design that allows the game to be played on as wide a range of devices as possible, while maintaining the visual appeal and integrity of the site.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+**Link to deployed site:** (https://andy-guttridge.github.io/memory-mixup/)
 
-A blue button should appear to click: _Make Public_,
+## Features 
 
-Another blue button should appear to click: _Open Browser_.
+### Mobile first design
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+The game was designed around the iPhone 5/SE screen size to ensure it is playable and appealing on as wide a range of devices as possible.
 
-To log into the Heroku toolbelt CLI:
+The mobile first design addresses objectives 2, 3 and 4.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+<p align="center">
+  <img src="readme_assets/mobile-game-screen.png" alt="Main screen of game on mobile" width = "250px">
+</p>
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### Colourful header/logo
 
-------
+The game features a colourful header/logo, designed to be both eye catching and clear to read. The logo is a clickable link to the site, however as there is only a single page it is unlikely this feature will be used much, and for that reason a decision was taken not to compromise the visual appeal of the logo by underlining it or having it highlighted by the mouse pointer.
 
-## Release History
+The logo addresses objectives 3 and 4.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+<p align="center">
+  <img src="readme_assets/mm-logo.png" alt="Game logo" width = "250px">
+</p>
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+### Controls and information area
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+Under the main logo is an area containing the main controls for the game, a 'Play!' button to start the game and a 'How to play' button to enable the instructions to be viewed at any time.
+This area also features some key information - the amount of time left for the current turn, the number of turns left and the score. This key information is presented in three of the colours used for the logo, in keeping with the visual style of the site.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+This controls and information area addresses objectives 1, 2 and 3.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+<p align="center">
+  <img src="readme_assets/controls-info-area.png" alt="Controls and information area" width = "250px">
+</p>
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### Answer area
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+Under the controls and information area is the answer area. This features the three buttons from which the player is able to select their answer for each turn at the appropriate time. These buttons are only selectable when it is time to choose an answer. They are disabled and populated with a question mark image at other times.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+The answer area also features two dynamic message areas where various in game messages are displayed to guide the player through the game, and offer feedback as to their performance. This includes the correct answer when the player makes an incorrect choice, and a timer to count down to the next turn after the player has given their answer.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+The answer area addresses objectives 1, 2, 3 and 4.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+<p align="center">
+  <img src="readme_assets/answer-area-1.png" alt="Answer area with disabled answer buttons" width = "250px">
+  <img src="readme_assets/answer-area-2.png" alt="Answer area with prompt to provide answer" width = "250px">
+  <img src="readme_assets/answer-area-3.png" alt="Answer area with hard luck message" width = "250px">
+  <img src="readme_assets/answer-area-4.png" alt="Answer area with well done message" width = "250px">
+</p>
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### Main game board
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+The main game board is the area where a random selection of objects for the player to memorise is placed. When an item is removed, the order of the objects is randomised and one object is removed and replaced with a red cross to indicate the missing object.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+This feature addresses objectives 1, 3 and 4.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+<p align="center">
+  <img src="readme_assets/game-board-1.png" alt="Main game board with selection of objects" width = "250px">
+  <img src="readme_assets/game-board-2.png" alt="Main game board with one object removed" width = "250px">
+</p>
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### Footer
 
-------
+The site features a footer with a link to the creator's GitHub profile. The footer is responsive to device size and therefore addresses objective 4.
 
-## FAQ about the uptime script
+<p align="center">
+  <img src="readme_assets/footer.png" alt="Footer with link to creator's GitHub profile" width = "250px">
+</p>
 
-**Why have you added this script?**
+### How To Play modal dialog
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+Instructions for the game are provided by a modal dialog which appears when the page first loads, and can be easily invoked by the player at any time via the 'How to play' button at the top of the website. The modal dialog is responsive to the size of the device, ensuring the instructions can be easily read on a wide range of devices.
 
-**How will this affect me?**
+This feature addresses objectives 2, 3 and 4.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+<p align="center">
+  <img src="readme_assets/how-to-play.png" alt="How to play modal dialog" width = "250px">
+</p>
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+### Game over modal dialog
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+After the final turn of the game, the player is presented with a modal dialog containing an end of game message with the total score. There is a different version of the message if the player hasn't scored anything.
 
-**So….?**
+The game over modal dialog addresses objectives 2, 3 and 4.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+<p align="center">
+  <img src="readme_assets/game-over-modal-1.png" alt="Game over modal dialog with well done message" width = "250px">
+  <img src="readme_assets/game-over-modal-2.png" alt="Game over modal dialog with zero score message" width = "250px">
+</p>
 
-**Can I opt out?**
+### 404 Error page
+A 404 error page to notify the user if they attempt to access a non-existent page or file. This is styled so that it clearly belongs to Memory Mix-up, and provides the user with a link back to the main site.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+The 404 error page addresses objectives 2 and 4.
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+<p align="center">
+  <img src="readme_assets/404.png" alt="404 page" width="250px">
+</p>
 
-**Anything more?**
+## Design
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+### Responsiveness
 
----
+### Planning
 
-Happy coding!
+### Colours
+
+### Fonts
+
+### Features Left to Implement
+
+## Testing 
+
+### Validator Testing 
+
+#### W3C HTML Validator
+
+#### W3C CSS Validator
+
+#### JSHint JavaScript Validator
+
+### Accessibility testing
+
+### Other testing
+
+### Unfixed Bugs
+
+## Deployment
+
+- The site can be deployed to GitHub pages as follows: 
+  - Select the 'Settings' tab in the GitHub repository
+  - Select 'Pages' under the 'Code and automation' heading 
+  - Select the 'Main' branch from the 'Source' drop-down menu
+  
+  The site will then be deployed with a message displayed indicating success and providing the URL of the deployed site.
+
+- A copy of the site can be downloaded for use in a local environment as follows:
+  - Locate the repository in GitHub and select it
+  - Select 'Code'
+  - Select 'Download ZIP' from the dropdown menu
+  - The ZIP file can now be extracted and utilised in your local environment
+
+## Credits 
+
+### Code
+
+### Content 
+
+### Media
+
+Images used in the completed website are:
+
+#### Thanks to [Adegbenga Adeye](https://ng.linkedin.com/in/adegbenga-adeye-psm-i-14003635?original_referer=https%3A%2F%2Fwww.google.com%2F) for guidance throughout the project.
