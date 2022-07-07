@@ -124,6 +124,24 @@ The 404 error page addresses objectives 2 and 4.
 
 ### Responsiveness
 
+A key aim for Memory Mix-up is for it to be playable and attractively presented on as wide a variety of devices as possible, in the interests of inclusivity. A mobile first approach was taken, with the iPhone 5/SE chosen as the 'base' target for the site, as this is an older device at the smaller end of the range of screen sizes available within the Google Chrome development tools. 
+
+One of the original objectives was for the site to fit onto the screen of all devices simulated within the Google Chrome development tools without any vertical scrolling, as the need to scroll was felt to detract from the game. Testing revealed that eliminating vertical scrolling resulted in the game being so small as to be practically unplayable on very small devices such as the JioPhone2, therefore this objective was relaxed. The revised aim was to minimise the need for vertical scrolling for the majority of devices, but to accept that it may be necessary in some cases. This objective included aiming for an attractive presentation on landscape devices as well as portrait, though achieving no vertical scrolling on every device in both portrait and landscape orientations proved impractical. However the site provides a good experience for the vast majority of devices in portrait orientation, with many also able to view the site in landscape with little or no vertical scrolling required. 
+
+Creating a responsive and inclusive design was a particularly challenging aspect of the project, given the desire to manage the vertical dimensions of the game and minimise vertical scrolling as well as respond to the width of devices.
+
+The following media queries were implemented to achieve responsivity and inclusiveness, with specific changes to the sizing of the logo, fonts, the answer buttons and the game board items to fit as many devices as possible:
+
+- For devices between 550px and 899px width in portrait orientation
+- For devices wider than 900px in portrait orientation
+- For devices taller than 1100px in portrait orientation
+- For devices with a height less than 567px and more than 480px in portrait orientation
+- For devices with a height less than 479px in portrait orientation 
+- For devices wider than 1000px and no taller than 900px (e.g. the Nest Hub)
+- For devices up to 550px wide in landscape orientation
+- For devices between 550px and 749px wide in landscape orientation
+- For devices between 750px and 960px wide in landscape orientation
+
 ### Planning
 
 ### Colours
