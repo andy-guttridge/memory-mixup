@@ -194,21 +194,59 @@ The time allowed per turn was typically set to just a few seconds throughout tes
 Bugs encountered and fixed during development included:
 
 - A bug causing the timer not to decrement in the JavaScript `runTimer()` function. The Google Chrome JavaScript debugger was used to step through each instruction, which enabled the bug to be isolated and fixed.
-- A bug causing the 'Play!' button not to be enabled after completing a game and then selecting the 'How to play' button. An `isPlaying` boolean variable was added to the `PLAYER_STATE` object to track whether a game is currently in progress, which allows a straightforward test to determine whether the 'Play!' button should be re-enabled after the 'How to play' modal dialog is dismissed.
+- A bug causing the 'Play!' button not to be enabled after completing a game and then selecting the 'How to play' button. An `isPlaying` boolean variable was added to the `PLAYER_STATE` object to track whether a game is currently in progress. This allows a straightforward test of whether a game is in progress, and if it is not then to allow the 'Play!' button to be re-enabled after the 'How to play' modal dialog is dismissed.
 
 ### Validator Testing 
 
 #### W3C HTML Validator
 
+The W3C HTML validator revealed that the `<div>` elements used to present information such as the score, time left and number of turns left in the controls and information area and in the modal dialog required a `role` attribute to be used in conjunction with the `aria-label` attribute. Suitable `role` values were added. 
+
+Additionally and late in development, the validator demonstrated that the `<div>` elements used to contain the logo and the `<a>` elements used to turn the logo into a link were not nested and closed correctly. 
+
+With these errors having been addressed, both the `index.html` and `404.html` pages pass validation with no issues. 
+
 #### W3C CSS Validator
+
+The W3C validator found no issues with `assets/css/styles.css`.
 
 #### JSHint JavaScript Validator
 
-### Accessibility testing
+JSHint was configured to assume that ES6 JavaScript features are acceptable, given these were introduced in 2015.
+JSHint produced one warning about the use of ES8 syntax (`async function`). [caniuse.com](https://caniuse.com/async-functions) demonstrates this feature is implemented by the majority of browsers and estimates it is available for 96.15% of users across mobile and desktop devices. This was felt to be an acceptably high proportion.
 
-### Other testing
+JSHint demonstrated that all functions within `assets/scripts/script.js` had a cyclomatic complexity of 5 or below, with the exception of the `getAnswerFromPlayer()` function, which had a cyclomatic complexity of 7. Researching the topic revealed [this blog post](https://elijahmanor.com/blog/control-the-complexity-of-your-javascript-functions-with-jshint) from Elijah Manor which cites a recommendation in Code Complete by Steve McConnell that a cyclomatic complexity above 5 is worthy of further investigation.
+
+The `getAnswerFromPlayer()` function was refactored and some functionality split out into a new `checkItemValid()` function. This reduced the cyclomatic complexity of `getAnswerFromPlayer` down to 5, but at the expense of introducing a new function also with a cyclomatic complexity of 5 and requiring 4 parameters. This was deemed acceptable for the time being, however further refactoring these two functions would have been a focus given more time, and may be worth revisiting in future.
+
+JSHint also detected numerous missing semi-colons, which were inserted.
+
+### Lighthouse testing
+
+The Lighthouse in the Google Chrome developer tools highlighted that a number of `aria-labels` on the `<div>` elements used for the game board items did not match the aria `role` attribute. Given the images in these elements change frequently, `aria-label` attributes are added programmatically via JavaScript, and no `role` attribute had been set.
+
+<p align="center">
+  <img src="readme_assets/lighthouse-aria.png" alt="Extract of lighthouse report showing issue with aria-labels" width="600">
+</p>
+
+This was rectified by adding `role` attributes to the `<div>` elements in `index.html`, while stilling setting the `aria-label` attribute programmatically, and the Lighthouse score for accessability increased to 100%, along with 97% for performance and 100% for best practices.
+
+<p align="center">
+  <img src="readme_assets/lighthouse-final.png" alt="Final lighthouse report">
+</p>
+
+
+97% for performance was deemed acceptable, however potential improvements and areas to investigate identified by Lighthouse and which could be reviewed in future include:
+
+- Serving images in next generation formats
+- Serve static assets with an efficient cache policy
+- Keep request counts low and transfer sizes small
+- The game board area was identified as the 'largest contentful paint' element
+- Avoid large layout shifts - note that large layout shifts are required for Memory Mix-up
 
 ### Unfixed Bugs
+
+All bugs identified during development and testing have been fixed.
 
 ## Deployment
 
@@ -229,10 +267,66 @@ Bugs encountered and fixed during development included:
 
 ### Code
 
-### Content 
+- HTML and CSS code to create a modal dialog was adapated from a [W3 Schools tutoral](https://www.w3schools.com/howto/howto_css_modals.asp)
+- Code to import Google Fonts and font-family attribute values were copied and pasted from [Google Fonts](fonts.google.com)
+- The algorithm to randomly shuffle an array in the `takeOneItem()` function was taken from [Stack Overflow](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
+- Code to implement an asynchronous timer was adapted from a [Mastering JS](https://masteringjs.io/tutorials/fundamentals/wait-1-second-then#:~:text=To%20delay%20a%20function%20execution,call%20fn%20after%201%20second) article
+- This [mdn web docs](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) article on callback functions was referenced when implementing the `runTimer` function
+- This [Stack Overflow](https://stackoverflow.com/questions/13286233/pass-a-javascript-function-as-parameter) question about using an anonymous function as a wrapper for passing a function with parameters as the value for a callback was referenced when implementing the the call of `runTimer()` in the `playGame()` function
+- This [Stack Overflow](https://stackoverflow.com/questions/4190792/should-i-use-a-global-variable-and-if-not-what-instead-javascript) article was referenced with respect to options for avoiding global variables, resulting in the decision to wrap all of the JavaScript inside an anonymous function
 
 ### Media
 
-Images used in the completed website are:
+#### Images used for the game board items are:
+
+Book: https://pixabay.com/vectors/book-read-library-reading-2028193/
+
+Car: https://pixabay.com/vectors/automobile-car-red-french-old-1300467/
+
+Cat: https://pixabay.com/vectors/kitten-cute-cat-animals-furry-4794761/
+
+Cheese: https://pixabay.com/vectors/cheese-dairy-dairy-product-151032/
+
+Cow: https://pixabay.com/vectors/cow-grass-eating-animal-159893/
+
+Cross: https://pixabay.com/vectors/check-cross-red-green-attention-158879/
+
+Drum: https://pixabay.com/vectors/drum-instrument-music-musical-1294954/
+
+Duck: https://pixabay.com/vectors/rain-duck-puddle-boots-water-bird-312098/
+
+Elephant: https://pixabay.com/vectors/abstract-animal-art-blue-1296709/
+
+Fish: https://pixabay.com/vectors/goldfish-fish-koi-carp-30837/
+
+Fork: https://pixabay.com/vectors/fork-cutlery-kitchenware-piece-41080/
+
+Guitar: https://pixabay.com/vectors/guitar-music-rock-2024189/
+
+Hat: https://pixabay.com/vectors/hat-clothing-fedora-elegant-158569/
+
+House: https://pixabay.com/vectors/cottage-house-home-building-little-160367/
+
+Lamp: https://pixabay.com/vectors/desk-lamp-lamp-night-office-red-147523/
+
+Owl: https://pixabay.com/vectors/automobile-car-red-french-old-1300467/
+
+Piano: https://pixabay.com/vectors/grand-piano-piano-music-161447/
+
+Question mark: https://pixabay.com/vectors/question-question-mark-punctuation-1243504/
+
+Table: https://pixabay.com/vectors/table-grey-silver-flat-couch-308862/
+
+Tree: https://pixabay.com/vectors/trees-forest-nature-woods-flora-146748/
+
+Umbrellla: https://pixabay.com/vectors/umbrella-color-rain-colorful-water-1767541/
+
+#### Background Image
+
+The background image is: https://www.pexels.com/photo/gray-wooden-surface-1250283/
+
+#### Fonts
+
+The fonts used are [Permanent Marker](https://fonts.google.com/specimen/Permanent+Marker?query=permanent+marker) and [Play](https://fonts.google.com/specimen/Play) from [Google Fonts](https://fonts.google.com/).
 
 #### Thanks to [Adegbenga Adeye](https://ng.linkedin.com/in/adegbenga-adeye-psm-i-14003635?original_referer=https%3A%2F%2Fwww.google.com%2F) for guidance throughout the project.

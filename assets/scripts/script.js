@@ -1,6 +1,8 @@
-/* Script wrapped in anonymous function to limit scope of constants */
+// Script wrapped in anonymous function to limit scope of constants
+// as per advice in https://stackoverflow.com/questions/4190792/should-i-use-a-global-variable-and-if-not-what-instead-javascript
+
 (function(){
-  /* ------------ Constant definitions ------------ */
+  // ------------ Constant definitions ------------ 
   //The number of items required on the game board for each turn of the game
   const NUMBER_OF_PLAY_ITEMS = 12; 
 
@@ -128,6 +130,9 @@
     //Pass the timer function a callback to execute the next part of the game when the timer ends
     let startButton = document.getElementById('start-button');
     startButton.setAttribute('disabled', true);
+
+    //Referenced this Stack Overflow question about how to use an anonymous function to pass a function with parameters as a value:
+    //https://stackoverflow.com/questions/13286233/pass-a-javascript-function-as-parameter
     runTimer(TIMER_AMOUNT, function(){takeOneItem(randomItemsList);}, 'time-left-info');
   }
 
@@ -165,7 +170,7 @@
 
       //Display the image via CSS backgroundImage property and set an appropriate aria-label
       gameItemContainer.style.backgroundImage = imageFileNameString; 
-      gameItemContainer.setAttribute('aria-label', `Game board item - ${randomItemsList[i].name}`)
+      gameItemContainer.setAttribute('aria-label', `Game board item - ${randomItemsList[i].name}`);
     }
   }
 
@@ -226,7 +231,7 @@
       if (i === randomButton) {
         answerButton.setAttribute('data-correct-answer', true);
         answerButton.setAttribute('src', `assets/images/${removedItem.image}`);
-        answerButton.setAttribute('aria-label', `Answer option - ${removedItem.name}`)
+        answerButton.setAttribute('aria-label', `Answer option - ${removedItem.name}`);
         i++;
       } else {
         //Otherwise find a random item that wasn't already on the board and add it to the button, unless its one we've already used or the big cross
@@ -239,7 +244,7 @@
         if (checkItemValid(randomItem, randomItemsList, removedItem, newRandomItems)) {
           answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
           answerButton.setAttribute('data-correct-answer', false);
-          answerButton.setAttribute('aria-label', `Answer option - ${randomItem.name}`)
+          answerButton.setAttribute('aria-label', `Answer option - ${randomItem.name}`);
 
           //Store the name of the correct item as an attribute of the button for use when we evaluate whether the player chose the correct answer
           answerButton.setAttribute('data-correct-item-name', removedItem.name);
@@ -308,10 +313,6 @@
 
   /**
    * Starts an asynchronous timer and updates the timer on the display
-   * Accepts three parameters:
-   * TimeInSeconds is the number of seconds we want the timer to run;
-   * callback is the function to be called when the timer has elapsed;
-   * displayElementId is optional. It is a string containing the DOM ID for the HTML element for the timer to update
    * @param {number} timeInSeconds -  number of seconds for the timer to run
    * @param {callback} callback - function to be called when the timer has completed
    * @param {string} displayElementId - the DOM ID for the HTML element for the timer to update (this param is optional)
