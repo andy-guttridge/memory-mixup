@@ -253,7 +253,7 @@
         } 
       }
     }
-    
+
     //Make sure the bottom message area is clear of text
     document.getElementById('bottom-message-area').textContent = ' ';
   }

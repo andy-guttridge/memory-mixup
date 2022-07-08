@@ -90,6 +90,8 @@ This controls and information area addresses objectives 1, 2 and 3.
 
 Under the controls and information area is the answer area. This features the three buttons from which the player is able to select their answer for each turn at the appropriate time. These buttons are only selectable when it is time to choose an answer. They are disabled and populated with a question mark image at other times.
 
+When the player is prompted to give their answer, one button is chosen at random and populated with the correct answer. The other two buttons are populated with random items that are not currently on the game board, and will not be duplicates.
+
 The answer area also features two dynamic message areas where various in game messages are displayed to guide the player through the game, and offer feedback as to their performance. This includes the correct answer when the player makes an incorrect choice, and a timer to count down to the next turn after the player has given their answer.
 
 The answer area addresses objectives 1, 2, 3 and 4.
@@ -253,7 +255,7 @@ JSHint produced one warning about the use of ES8 syntax (`async function`). [can
 
 JSHint demonstrated that all functions within `assets/scripts/script.js` had a cyclomatic complexity of 5 or below, with the exception of the `getAnswerFromPlayer()` function, which had a cyclomatic complexity of 7. Researching the topic revealed [this blog post](https://elijahmanor.com/blog/control-the-complexity-of-your-javascript-functions-with-jshint) from Elijah Manor, which cites a recommendation in Code Complete by Steve McConnell that a cyclomatic complexity above 5 is worthy of further investigation.
 
-The `getAnswerFromPlayer()` function was refactored and some functionality split out into a new `checkItemValid()` function. This reduced the cyclomatic complexity of `getAnswerFromPlayer()` down to 5, but at the expense of introducing a new function also with a cyclomatic complexity of 5 and requiring 4 parameters. This was deemed acceptable for the time being, however further refactoring these two functions would have been a focus given more time, and may be worth revisiting in future.
+The `getAnswerFromPlayer()` function was refactored and some functionality split out into a new `checkItemValid()` function. This reduced the cyclomatic complexity of `getAnswerFromPlayer()` down to 5, but at the expense of introducing a new function also with a cyclomatic complexity of 5 and requiring 4 arguments. This was deemed acceptable for the time being, however further refactoring these two functions would have been a focus given more time, and may be worth revisiting in future.
 
 JSHint also detected numerous missing semi-colons, which were inserted.
 
@@ -290,9 +292,10 @@ The Google Chrome browser console displayed the following warning for the deploy
   <img src="readme_assets/permission-policy.png" alt="Permission policy header error screenshot">
 </p>
 
-This occurs because Google's Federated Learning of Cohorts (FLoC) tracking technology is disabled by default on Github Pages to protect user's privacy. This does not impact the functioning of the website. Further information about FLoC is available at:
+This occurs because Google's Federated Learning of Cohorts (FLoC) tracking technology is disabled by default on Github Pages to protect user's privacy. This does not impact the functioning of the website. Further information about FLoC and this error is available at:
 
 [What is FLoC?](https://web.dev/floc/#do-websites-have-to-participate-and-share-information)
+
 [GitHub community post](https://github.community/t/i-have-no-idea-what-the-interest-cohort-is/179780)
 
 ## Deployment
