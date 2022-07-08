@@ -578,6 +578,7 @@ footer p {
 }
 
 /* -------------------- Devices between 550px and 749px wide in landscape mode -------------------- */
+
 @media (min-width: 550px) and (max-width:749px) and (orientation: landscape) {
   /*Site wide styles */
 
@@ -621,7 +622,7 @@ footer p {
   /* Styles for  modal dialog */
 
   .modal-dialog {
-    margin: 10% auto;
+    margin: 5% auto;
   }
 }
 
