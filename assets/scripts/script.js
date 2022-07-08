@@ -36,7 +36,7 @@
     {name:'table', image:'table-img.png'},
     {name:'tree', image:'tree-img.png'},
     {name:'umbrella', image:'umbrella-img.png'}
-];
+  ];
 
   // Call setUp() function when DOM has loaded
   document.addEventListener('DOMContentLoaded', setUp); 
@@ -85,7 +85,6 @@
 
     //Add event listeners to buttons. Make sure start button is enabled
     for (let button of buttons) {
-
       if(button.getAttribute('id') === 'start-button') {
         button.addEventListener('click', playGame);
         button.removeAttribute('disabled');
@@ -308,7 +307,7 @@
     } else {
         PLAYER_STATE.isPlaying = false;
         runTimer(2, endGameMessage, null);
-      }
+    }
   }
 
   /**
@@ -367,25 +366,25 @@
     let message = '';
     if (PLAYER_STATE.score > 0) {
       message = `
-      <p>That's the end of the game.</p>
-      <p>You got ${PLAYER_STATE.score} right, well done!</p>
+        <p>That's the end of the game.</p>
+        <p>You got ${PLAYER_STATE.score} right, well done!</p>
       `;
     } else {
       message = `
-      <p>That's the end of the game.</p>
-      <p>You didn't get any right.</p>
-      <p>Better luck next time!</p>
+        <p>That's the end of the game.</p>
+        <p>You didn't get any right.</p>
+        <p>Better luck next time!</p>
       `;
     }
     
     /* Create html content for the modal */
     let content = `
-    <h2>Game Over!</h2>
-    <div class = "modal-inner-text">
-     ${message}
-    </div>
-    <br>
-    <button id = "ok-button">OK</button>
+      <h2>Game Over!</h2>
+      <div class = "modal-inner-text">
+      ${message}
+      </div>
+      <br>
+      <button id = "ok-button">OK</button>
     `;
 
     /* Show the modal dialog */
@@ -419,15 +418,15 @@
 
   /**
    * Hides the modal dialog and enables 'play' and 'how to play' buttons
-   * @param {event} event - event triggered by the player clicking the ok-button
+   * @param {event} event - event triggered by the player clicking the ok-button or clicking the modal background
    */
   function hideModal(event) {
     //Check for an event from the button inside the modal or a click on the background of the modal and hide modal if received
     //and then deal with buttons and event listeners
-    
+
     //Code to close a modal dialog when the player clicks outside of it adapated from https://techstacker.com/close-modal-click-outside-vanilla-javascript/
     if (event.target.matches('#ok-button') || event.target.matches('#modal-background')) {
-    document.getElementById('modal-background').style.display = 'none';
+      document.getElementById('modal-background').style.display = 'none';
     
       //Enable the 'Play!' button if the game has ended
       if (!PLAYER_STATE.isPlaying) {
