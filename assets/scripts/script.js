@@ -412,6 +412,8 @@
     } else {
       throw ('Unrecognised button in showModal()');
     }
+
+    //Add event listener to body to allow modal to be dismissed by clicking outside of it
     document.body.addEventListener('click', hideModal);
   }
 
@@ -420,12 +422,17 @@
    * @param {event} event - event triggered by the player clicking the ok-button
    */
   function hideModal(event) {
-      if (event.target.matches('#ok-button') || event.target.matches('#modal-background')) {
-      document.getElementById('modal-background').style.display = 'none';
-
+    //Check for an event from the button inside the modal or a click on the background of the modal and hide modal if received
+    //and then deal with buttons and event listeners
+    if (event.target.matches('#ok-button') || event.target.matches('#modal-background')) {
+    document.getElementById('modal-background').style.display = 'none';
+    
+      //Enable the 'Play!' button if the game has ended
       if (!PLAYER_STATE.isPlaying) {
         document.getElementById('start-button').removeAttribute('disabled');
       }
+
+      //Enable the 'How to play' button and remove the click event listener from the body
       document.getElementById('info-button').removeAttribute('disabled');
       document.body.removeEventListener('click', hideModal);
   
