@@ -6,7 +6,7 @@
 
 Memory Mix-up is a browser based memory game for children and adults, based on the traditional [Kim's Game](https://en.wikipedia.org/wiki/Kim%27s_Game). 
 
-A random selection of items is placed on the game board, and the player has 30 seconds to memorise them. An item is then removed, the order of the remaining objects is mixed up, and the player guesses which item they think is missing. 
+A random selection of items is placed on the game board, and the player has 20 seconds to memorise them. An item is then removed, the order of the remaining objects is mixed up, and the player guesses which item they think is missing. 
 
 In this implementation, the player is given a choice of three possible answers, one of which is the correct item, while the other two are random items not among those on the game board. The player has five turns, with a score out of five at the end of the game.
 
@@ -57,7 +57,7 @@ The objectives of the site are:
 
 ### Mobile first design
 
-The game was designed around the iPhone 5/SE screen size to ensure it is playable and appealing on as wide a range of devices as possible.
+The game was designed around the iPhone 5/SE in portrait orientation to ensure it is playable and appealing on as wide a range of devices as possible.
 
 The mobile first design addresses objectives 2, 3 and 4.
 
@@ -158,7 +158,7 @@ The 404 error page addresses objectives 2 and 4.
 
 ### Responsiveness
 
-A key aim for Memory Mix-up is for it to be playable and attractively presented on as wide a variety of devices as possible, in the interests of inclusivity. A mobile first approach was taken, with the iPhone 5/SE chosen as the 'base' target for the site, as this is an older device at the smaller end of the range of screen sizes available within the Google Chrome development tools. 
+A key aim for Memory Mix-up is for it to be playable and attractively presented on as wide a variety of devices as possible, in the interests of inclusivity. A mobile first approach was taken, with the iPhone 5/SE in portrait orientation chosen as the 'base' target for the site, as this is an older device at the smaller end of the range of screen sizes available within the Google Chrome development tools. 
 
 One of the original objectives was for the site to fit onto the screen of all devices simulated within the Google Chrome development tools without any vertical scrolling, as the need to scroll was felt to detract from the game. Testing revealed that eliminating vertical scrolling resulted in the game being so small as to be practically unplayable on very small devices such as the JioPhone2, therefore this objective was relaxed. The revised aim was to minimise the need for vertical scrolling for the majority of devices, but to accept that it may be necessary in some cases. 
 

@@ -197,7 +197,7 @@ footer p {
 
 .modal-inner-text {
   /* .modal-inner-text is not defined in index.html, these are added to the DOM via JavaScript */
-  display: inline-block
+  display: inline-block;
 }
 
 #ok-button {
@@ -462,7 +462,7 @@ footer p {
  }
 
  button {
-  font-size: 0.75rem;
+  font-size: 1rem;
  }
 
  /*  Styles for answer area  */
@@ -481,11 +481,6 @@ footer p {
    width: 18%;
    padding-top: 18%;
  }
-
-/* Styles for modal dialog */
-.modal-dialog p {
-  font-size: 1.25rem;
-  }
 }
 
 /* -------------------- Devices with a height less than 480px in portrait (e.g. Jiophone 2) -------------------- */

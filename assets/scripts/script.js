@@ -7,7 +7,7 @@
   const NUMBER_OF_PLAY_ITEMS = 12; 
 
   //The allowed time per turn of the game in seconds
-  const TIMER_AMOUNT = 5; 
+  const TIMER_AMOUNT = 20; 
 
   //The number of turns at the start of a new game
   const STARTING_TURNS = 5; 
