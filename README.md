@@ -284,6 +284,17 @@ This was rectified by adding `role` attributes to the `<div>` elements in `index
 
 All bugs identified during development and testing have been fixed.
 
+The Google Chrome browser console displayed the following warning for the deployed site:
+
+<p align="center">
+  <img src="readme_assets/permission-policy.png" alt="Permission policy header error screenshot">
+</p>
+
+This occurs because Google's Federated Learning of Cohorts (FLoC) tracking technology is disabled by default on Github Pages to protect user's privacy. This does not impact the functioning of the website. Further information about FLoC is available at:
+
+[What is FLoC?](https://web.dev/floc/#do-websites-have-to-participate-and-share-information)
+[GitHub community post](https://github.community/t/i-have-no-idea-what-the-interest-cohort-is/179780)
+
 ## Deployment
 
 - The site can be deployed to GitHub pages as follows: 
