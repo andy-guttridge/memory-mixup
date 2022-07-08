@@ -410,8 +410,9 @@
     if(okButton) {
       okButton.addEventListener('click', hideModal);
     } else {
-      throw ('Unrecognised button passed to showModal()');
+      throw ('Unrecognised button in showModal()');
     }
+    document.body.addEventListener('click', hideModal);
   }
 
   /**
@@ -419,21 +420,19 @@
    * @param {event} event - event triggered by the player clicking the ok-button
    */
   function hideModal(event) {
-    if (event.target.getAttribute('id') === 'ok-button') {
+      if (event.target.matches('#ok-button') || event.target.matches('#modal-background')) {
       document.getElementById('modal-background').style.display = 'none';
-    } else {
-      throw('Unrecognised button passed to hideModal()');
-    }
 
-    //Enable 'play' and 'how to play' buttons
-    if (!PLAYER_STATE.isPlaying) {
-      document.getElementById('start-button').removeAttribute('disabled');
-    }
-    document.getElementById('info-button').removeAttribute('disabled');
-
-    //If the player has no turns left, then call setup() to set up for a new game
-    if (PLAYER_STATE.turnsLeft < 1) {
-      setUp();
-    }
+      if (!PLAYER_STATE.isPlaying) {
+        document.getElementById('start-button').removeAttribute('disabled');
+      }
+      document.getElementById('info-button').removeAttribute('disabled');
+      document.body.removeEventListener('click', hideModal);
+  
+      //If the player has no turns left, then call setup() to set up for a new game
+      if (PLAYER_STATE.turnsLeft < 1) {
+        setUp();
+      }
+    }    
   }
 })();
