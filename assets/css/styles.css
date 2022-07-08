@@ -50,7 +50,7 @@ a {
 }
 
 a:hover {
-  color: magenta;
+  color: lightpink;
 }
 
 button {
@@ -196,7 +196,7 @@ footer p {
 }
 
 .modal-inner-text {
-  /* .modal-inner-text is not defined in index.html, these are added to the DOM via JavaScript */
+  /* .modal-inner-text is not defined in index.html, these elements are added to the DOM via JavaScript */
   display: inline-block;
 }
 
@@ -262,6 +262,7 @@ footer p {
     font-size: 1.5rem;
   }
 }
+
 /* -------------------- Devices wider than 899px -------------------- */
 
  @media (min-width: 900px) {
@@ -413,6 +414,7 @@ footer p {
   }
 
   /* Styles for header */
+
   .title-container {
     display: inline-block;
   }
@@ -486,6 +488,7 @@ footer p {
 /* -------------------- Devices with a height less than 480px in portrait (e.g. Jiophone 2) -------------------- */
 
 @media (max-height: 479px) and (orientation: portrait) {
+
   /* Site wide styles */
 
   h2 {
@@ -575,6 +578,7 @@ footer p {
 /* -------------------- Devices between 550px and 749px wide in landscape mode -------------------- */
 
 @media (min-width: 550px) and (max-width:749px) and (orientation: landscape) {
+  
   /*Site wide styles */
 
   h1 {

@@ -200,7 +200,7 @@ White was chosen for other in game text and the borders for the answer buttons a
 
 A dark red (`#8c0712`) and a dark blue (`#3f7e91`) were chosen for the 'Play!' and 'How to play' buttons, to complement the colours in the logo and provide contrast against the writing on the buttons. A dark grey (`#444`) background and light grey text (`#ddd`) were chosen for the buttons in their disabled state to clearly indicate when they are not selectable.
 
-The standard CSS `aqua` colour was chosen for standard text links on the basis that this is a higher contrast variation of the blue colour typically used for links, with the CSS `magenta` colour used as the 'hover over' colour to provide an obvious contrast.
+The standard CSS `aqua` colour was chosen for standard text links on the basis that this is a higher contrast variation of the blue colour typically used for links, with the CSS `lightpink` colour used as the 'hover over' colour to provide an obvious contrast to `aqua`.
 
 A dark black and white image of some wooden planks was chosen as a background for the site, in order to provide a pleasant, non-distracting and high contrast background suitable for a wide range of screen sizes. The `body` of the site has a very dark blue (`rgb(2, 4, 64)`) fallback colour to ensure a high contrast with the foreground elements should the background fail to load. 
 

@@ -41,7 +41,7 @@
     </div>
   </header>
 
-  <!-- The 'controls' section of the site containing buttons to start game and view instructions, plus game timer, turns left and current score -->
+  <!-- 'Controls' section of the site containing buttons to start game and view instructions, plus game timer, turns left and current score -->
 
   <section aria-label="Overall game controls and player information">
 
@@ -64,7 +64,8 @@
     </div>
   </section>  
 
-  <!-- The section where the user inputs the answer for each turn of the game -->
+  <!-- Section where the player inputs the answer for each turn of the game -->
+  <!-- Also displays some in game messages to the player -->
   <section aria-label="Buttons for player to provide their answer for each turn of the game">
 
     <!-- Div to contain the answer area -->
@@ -77,7 +78,7 @@
     </div>
   </section>
 
-  <!-- The section containing the main game board -->
+  <!-- Section containing the main game board -->
   <section aria-label="The main game board">
 
     <!-- Div to contain the main game board -->
@@ -99,12 +100,17 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>Created by <a href="https://github.com/andy-guttridge" target="_blank" rel="noopener" aria-label="Link to the creator's GitHub profile - opens in new window">Andy Guttridge</a></p>
   </footer>
 
+  <!-- Modal dialog -->
   <!-- Code to create a modal dialog adapted from https://www.w3schools.com/howto/howto_css_modals.asp -->
+
+  <!-- Outer modal container -->
   <div id = "modal-background" aria-label="Modal dialog window" role="dialog">
+    <!-- Inner modal which contains the text -->
     <div class = "modal-dialog" id="game-modal">
       This is a modal dialog
     </div>
@@ -113,7 +119,7 @@
   <!-- Link to JavaScript file -->
   <script src="assets/scripts/script.js"></script>
 
-  <!-- Display message if user's browser does not have JavaScript enabled -->
+  <!-- Display message if player's browser does not have JavaScript enabled -->
   <noscript>
     <p>It looks like your browser doesn't support JavaScript, or you have JavaScript disabled.</p>
     <p>You'll need to use a different browser that does support JavaScript or renable it to play this game.</p>

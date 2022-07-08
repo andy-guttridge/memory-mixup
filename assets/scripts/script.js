@@ -3,6 +3,7 @@
 
 (function(){
   // ------------ Constant definitions ------------ 
+
   //The number of items required on the game board for each turn of the game
   const NUMBER_OF_PLAY_ITEMS = 12; 
 
@@ -110,7 +111,7 @@
     //Clear the bottom message area
     document.getElementById('bottom-message-area').textContent = ' ';
     
-    // Fill the play area with random items. The set of random items is stored in a variable as it is later passed to another function.
+    // Fill the play area with random items. Store the items as we need to pass them to another function
     let randomItemsList = generateRandomItems();
     fillPlayArea(randomItemsList);
 
@@ -125,11 +126,11 @@
 
     document.getElementById('top-message-area').textContent = "Try to remember what's on the board!";
 
-    //Disable the start button, and start a timer
-    //Pass the timer function a callback to execute the next part of the game when the timer ends
+    //Disable the start button
     let startButton = document.getElementById('start-button');
     startButton.setAttribute('disabled', true);
 
+    //Start a timer and pass a callback to execute the next part of the game when the timer ends
     //Referenced this Stack Overflow question about how to use an anonymous function to pass a function with parameters as a value:
     //https://stackoverflow.com/questions/13286233/pass-a-javascript-function-as-parameter
     runTimer(TIMER_AMOUNT, function(){takeOneItem(randomItemsList);}, 'time-left-info');
@@ -205,7 +206,7 @@
 
   /**
    * Asks player which item is missing. Gives them three buttons to choose from, one of which is correct.
-   * Adds event listeners to the answer buttons. Accepts the randomised array of items and the item selected to be removed as parameters.
+   * Adds event listeners to the answer buttons. Accepts the randomised array of items and the item which has been removed as parameters.
    * @param {Array} randomItemsList - an array of game items which were used to populate the game board
    * @param {Array} removedItem - the game item that was randomly selected for removal from the game board
    */
@@ -220,7 +221,7 @@
     let newRandomItems = [];
     let i = 0;
     
-    // Loop until all three buttons have an image and ensure they are enabled
+    // Loop until all three buttons have an image and ensure buttons are enabled
     while (i < 3) {
       let answerButton = document.getElementById(`answer-button${i}`);
       answerButton.removeAttribute('disabled');
@@ -252,6 +253,7 @@
         } 
       }
     }
+    
     //Make sure the bottom message area is clear of text
     document.getElementById('bottom-message-area').textContent = ' ';
   }
@@ -392,7 +394,7 @@
   }
 
   /**
-   * Shows a modal dialog, disables 'play' and 'how to play' buttons and creates an event listener for an ok button in the modal.
+   * Shows a modal dialog, disables 'play' and 'how to play' buttons and creates event listeners for an ok button and the body element.
    * @param {string} content - html content to be displayed in the modal dialog
    */
   function showModal(content) {
@@ -411,6 +413,7 @@
     } else {
       throw ('Unrecognised button in showModal()');
     }
+
     //Code to close a modal dialog when the player clicks outside of it adapated from https://techstacker.com/close-modal-click-outside-vanilla-javascript/
     //Add event listener to body to allow modal to be dismissed by clicking outside of it
     document.body.addEventListener('click', hideModal);
@@ -418,6 +421,7 @@
 
   /**
    * Hides the modal dialog and enables 'play' and 'how to play' buttons
+   * Also sets up for a new game if the player has no turns left
    * @param {event} event - event triggered by the player clicking the ok-button or clicking the modal background
    */
   function hideModal(event) {
@@ -437,7 +441,7 @@
       document.getElementById('info-button').removeAttribute('disabled');
       document.body.removeEventListener('click', hideModal);
   
-      //If the player has no turns left, then call setup() to set up for a new game
+      //If the player has no turns left, this must be the game over modal, so call setup() to set up for a new game
       if (PLAYER_STATE.turnsLeft < 1) {
         setUp();
       }
