@@ -210,6 +210,8 @@ The answer buttons and the items on the main game board have a dark semi-transcl
 
 Fonts were sourced from [Google Fonts](https://fonts.google.com/). 'Permanent Marker' was chosen for the logo and headings for its playful quality, and 'Play' was chosen for the rest of the text because it is highly legible yet friendly looking.   
 
+A favicon using the 'Permanent Marker' font was created using [Favicon Generator](https://favicon.io/favicon-generator/).
+
 ### Features Left to Implement
 
 With the relaxation of the aim to eliminate all vertical scrolling, all planned features were successfully implemented.
@@ -309,6 +311,7 @@ All bugs identified during development and testing have been fixed.
 - This [Stack Overflow](https://stackoverflow.com/questions/13286233/pass-a-javascript-function-as-parameter) question was referenced to discover how to use an anonymous function as a wrapper for passing a function with arguments as the value for a callback when implementing the the call of `runTimer()` in the `playGame()` function
 - This [Stack Overflow](https://stackoverflow.com/questions/4190792/should-i-use-a-global-variable-and-if-not-what-instead-javascript) question was referenced with respect to options for avoiding global variables, resulting in the decision to wrap all of the JavaScript inside an anonymous function
 - The code to dismiss the modal dialog when the player clicks outside of the dialog was adapted from https://techstacker.com/close-modal-click-outside-vanilla-javascript/
+- The line of code to link to the favicon from the `<head>` element was based on [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-add-a-favicon-to-your-website-with-html) from Digital Ocean.
 
 ### Media
 
