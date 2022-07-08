@@ -347,7 +347,7 @@
     let content = `
     <h2>How to play</h2>
     <div class = "modal-inner-text">
-      <p>You have 30 seconds to memorise a random selection of items!</p>
+      <p>You have 20 seconds to memorise a random selection of items!</p>
       <p>One item will then be taken away.</p>
       <p>Can you guess which one is missing?</p>
       <p>You have five turns - can you score five out of five?</p>
