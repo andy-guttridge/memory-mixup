@@ -412,7 +412,7 @@
     } else {
       throw ('Unrecognised button in showModal()');
     }
-
+    //Code to close a modal dialog when the player clicks outside of it adapated from https://techstacker.com/close-modal-click-outside-vanilla-javascript/
     //Add event listener to body to allow modal to be dismissed by clicking outside of it
     document.body.addEventListener('click', hideModal);
   }
@@ -424,6 +424,8 @@
   function hideModal(event) {
     //Check for an event from the button inside the modal or a click on the background of the modal and hide modal if received
     //and then deal with buttons and event listeners
+    
+    //Code to close a modal dialog when the player clicks outside of it adapated from https://techstacker.com/close-modal-click-outside-vanilla-javascript/
     if (event.target.matches('#ok-button') || event.target.matches('#modal-background')) {
     document.getElementById('modal-background').style.display = 'none';
     

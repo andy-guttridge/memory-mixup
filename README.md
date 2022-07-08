@@ -124,6 +124,8 @@ The site features a footer with a link to the creator's GitHub profile. The foot
 
 Instructions for the game are provided by a modal dialog which appears when the page first loads, and can be easily invoked by the player at any time via the 'How to play' button at the top of the website. The modal dialog is responsive to the size of the device, ensuring the instructions can be easily read on a wide range of devices.
 
+The modal dialog can be dismissed either by clicking the 'I'm ready' button or by clicking outside of the dialog, in line with common UX convention.
+
 This feature addresses objectives 2, 3 and 4.
 
 <p align="center">
@@ -133,6 +135,8 @@ This feature addresses objectives 2, 3 and 4.
 ### Game over modal dialog
 
 After the final turn of the game, the player is presented with a modal dialog containing an end of game message with the total score. There is a different version of the message if the player hasn't scored anything.
+
+This modal dialog can also be dismissed by clicking outside of the dialog.
 
 The game over modal dialog addresses objectives 2, 3 and 4.
 
@@ -304,6 +308,7 @@ All bugs identified during development and testing have been fixed.
 - This [mdn web docs](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) article on callback functions was referenced when implementing the `runTimer` function
 - This [Stack Overflow](https://stackoverflow.com/questions/13286233/pass-a-javascript-function-as-parameter) question was referenced to discover how to use an anonymous function as a wrapper for passing a function with arguments as the value for a callback when implementing the the call of `runTimer()` in the `playGame()` function
 - This [Stack Overflow](https://stackoverflow.com/questions/4190792/should-i-use-a-global-variable-and-if-not-what-instead-javascript) question was referenced with respect to options for avoiding global variables, resulting in the decision to wrap all of the JavaScript inside an anonymous function
+- The code to dismiss the modal dialog when the player clicks outside of the dialog was adapted from https://techstacker.com/close-modal-click-outside-vanilla-javascript/
 
 ### Media
 
