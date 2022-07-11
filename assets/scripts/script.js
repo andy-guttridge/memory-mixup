@@ -71,7 +71,7 @@
     document.getElementById('start-button').removeAttribute('disabled');
 
     //If this is the player's first game after the page has loaded, display instructions and add event listeners to buttons
-    if (PLAYER_STATE.isFirstGame) {
+    if(PLAYER_STATE.isFirstGame) {
       addEventListenersToButtons();
       displayInstructions();
     }
@@ -85,7 +85,7 @@
     let buttons = document.getElementsByTagName('button');
 
     //Add event listeners to buttons. Make sure start button is enabled
-    for (let button of buttons) {
+    for(let button of buttons) {
       if(button.getAttribute('id') === 'start-button') {
         button.addEventListener('click', playGame);
         button.removeAttribute('disabled');
@@ -96,7 +96,7 @@
 
     //Add event listeners to answer buttons
     let answerButtons = document.getElementsByClassName('answer-button');
-    for (let button of answerButtons) {
+    for(let button of answerButtons) {
       button.addEventListener('click', evaluateAnswer);
     }
   }
@@ -118,7 +118,7 @@
     //Display the question mark image for each of the answer buttons and disable them
     //And set appropriate aria-labels
     let buttons = document.getElementsByClassName('answer-button');
-    for (let button of buttons) {
+    for(let button of buttons) {
       button.setAttribute('src', `assets/images/question-mark-img.png`);
       button.setAttribute('disable', 'true');
       button.setAttribute('aria-label', 'Answer button - inactive');
@@ -144,12 +144,12 @@
     //Empty array to hold the randomly selected items
     let randomItemsList = []; 
 
-    while (randomItemsList.length <= NUMBER_OF_PLAY_ITEMS - 1) {
+    while(randomItemsList.length <= NUMBER_OF_PLAY_ITEMS - 1) {
       //Create random integer no large than number of items we have to pick from
       let randomNumber = Math.floor(Math.random() * FULL_ITEMS_LIST.length);
 
       //Add random item to array if it isn't already in there 
-      if (!randomItemsList.includes(FULL_ITEMS_LIST[randomNumber])) { 
+      if(!randomItemsList.includes(FULL_ITEMS_LIST[randomNumber])) { 
         randomItemsList.push(FULL_ITEMS_LIST[randomNumber]);
       }
     }
@@ -161,7 +161,7 @@
    *  @param {Array} randomItemsList - an array of game items to populate the game board
    */
   function fillPlayArea(randomItemsList) {
-    for (let i = 0; i <= NUMBER_OF_PLAY_ITEMS - 1; i++) {
+    for(let i = 0; i <= NUMBER_OF_PLAY_ITEMS - 1; i++) {
       //Get reference to the current gameItemContainer
       let gameItemContainer = document.getElementById(`game-item${i}`);
 
@@ -185,7 +185,7 @@
     let randomIndex;
 
     //Loop while there are elements left to shuffle
-    while (currentIndex != 0) {
+    while(currentIndex != 0) {
       //Pick a random element of those that remain and then decrement the index 
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
@@ -222,13 +222,13 @@
     let i = 0;
     
     // Loop until all three buttons have an image and ensure buttons are enabled
-    while (i < 3) {
+    while(i < 3) {
       let answerButton = document.getElementById(`answer-button${i}`);
       answerButton.removeAttribute('disabled');
 
       //If the button is the one selected for the correct answer, give it a data attribute in the DOM to mark it as correct and set its image to the missing item
       //And set an appropriate aria-label
-      if (i === randomButton) {
+      if(i === randomButton) {
         answerButton.setAttribute('data-correct-answer', true);
         answerButton.setAttribute('src', `assets/images/${removedItem.image}`);
         answerButton.setAttribute('aria-label', `Answer option - ${removedItem.name}`);
@@ -241,7 +241,7 @@
 
         //Check if the random item is valid as one of the player options and set as the value for the answer button if it is
         //And set an appropriate aria-label
-        if (checkItemValid(randomItem, randomItemsList, removedItem, newRandomItems)) {
+        if(checkItemValid(randomItem, randomItemsList, removedItem, newRandomItems)) {
           answerButton.setAttribute('src', `assets/images/${randomItem.image}`);
           answerButton.setAttribute('data-correct-answer', false);
           answerButton.setAttribute('aria-label', `Answer option - ${randomItem.name}`);
@@ -268,7 +268,7 @@
    */
   function checkItemValid(randomItem, randomItemsList, removedItem, newRandomItems) {
     //Check if the random item was used on the board, that it isn't the correct answer, that it isn't the 'X' and that we haven't already used it for another answer button
-    if (!randomItemsList.includes(randomItem) && randomItem.name !== removedItem.name && randomItem.name !== 'X' && !newRandomItems.includes(randomItem)) {
+    if(!randomItemsList.includes(randomItem) && randomItem.name !== removedItem.name && randomItem.name !== 'X' && !newRandomItems.includes(randomItem)) {
       return true;
     }
     return false;
@@ -286,13 +286,13 @@
 
     //Disable answer buttons
     let answerButtons = document.getElementsByClassName('answer-button');
-    for (let button of answerButtons) {
+    for(let button of answerButtons) {
       button.setAttribute('disabled', 'true');
     }
 
     //If the player selected the correct answer, increment score and display well done message
     //Otherwise, display hard luck message
-    if (event.target.getAttribute('data-correct-answer') === 'true') {
+    if(event.target.getAttribute('data-correct-answer') === 'true') {
       document.getElementById('top-message-area').textContent = "Well done, that's right!";
       PLAYER_STATE.score++;
       document.getElementById('score-info').textContent = PLAYER_STATE.score;
@@ -303,7 +303,7 @@
 
     //Wait a few seconds and start another turn if the player has turns left
     //Otherwise, wait a few seconds and display end of game message
-    if (PLAYER_STATE.turnsLeft > 0) {
+    if(PLAYER_STATE.turnsLeft > 0) {
       document.getElementById('bottom-message-area').innerHTML = `Next turn in <span id = "turn-end-timer"></span>`;
       runTimer(5, playGame, 'turn-end-timer');
     } else {
@@ -322,14 +322,14 @@
     // Code to set up an asynchronous timer adapated from https://masteringjs.io/tutorials/fundamentals/wait-1-second-then#:~:text=To%20delay%20a%20function%20execution,call%20fn%20after%201%20second.
     let timerText = '';
 
-    if (displayElementId) { 
+    if(displayElementId) { 
       timerText = document.getElementById(displayElementId);
       timerText.textContent = timeInSeconds;
     }
-    while (timeInSeconds > 0) {
+    while(timeInSeconds > 0) {
       await new Promise(resolve => setTimeout(resolve, 1000));
       timeInSeconds--;
-      if (displayElementId){
+      if(displayElementId){
         timerText.textContent = timeInSeconds;
       }
     }
@@ -366,7 +366,7 @@
   function endGameMessage() {
     /* Create appropriate html message depending on whether the player scored any points */
     let message = '';
-    if (PLAYER_STATE.score > 0) {
+    if(PLAYER_STATE.score > 0) {
       message = `
         <p>That's the end of the game.</p>
         <p>You got ${PLAYER_STATE.score} right, well done!</p>
@@ -429,11 +429,11 @@
     //and then deal with buttons and event listeners
 
     //Code to close a modal dialog when the player clicks outside of it adapated from https://techstacker.com/close-modal-click-outside-vanilla-javascript/
-    if (event.target.matches('#ok-button') || event.target.matches('#modal-background')) {
+    if(event.target.matches('#ok-button') || event.target.matches('#modal-background')) {
       document.getElementById('modal-background').style.display = 'none';
     
       //Enable the 'Play!' button if the game has ended
-      if (!PLAYER_STATE.isPlaying) {
+      if(!PLAYER_STATE.isPlaying) {
         document.getElementById('start-button').removeAttribute('disabled');
       }
 
@@ -442,7 +442,7 @@
       document.body.removeEventListener('click', hideModal);
   
       //If the player has no turns left, this must be the game over modal, so call setup() to set up for a new game
-      if (PLAYER_STATE.turnsLeft < 1) {
+      if(PLAYER_STATE.turnsLeft < 1) {
         setUp();
       }
     }    
